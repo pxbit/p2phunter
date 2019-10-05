@@ -1,0 +1,19 @@
+{
+  "require":{
+    "jpgraph/jpgraph":"4.*.*",
+    "monolog/monolog": "1.9.*",
+    "rmccue/requests": ">=1.0",
+    "php-curl-class/php-curl-class": "^8.5",
+    "phpcollection/phpcollection": "^0.5.0",
+    "phpfastcache/phpfastcache": "^4.3",
+    "filp/whoops": "^1.1",
+    "tedivm/stash": "^0.14.2",
+    "timetoogo/pinq": "^3.3"
+  },
+  "autoload": {
+        "psr-0": {"Requests": "library/"}
+    },
+  "require-dev": {
+    "behat/mink": "^1.7"
+  }
+}

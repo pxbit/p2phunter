@@ -1,0 +1,121 @@
+#sub-user-center{
+  height:auto;
+  padding-top:5px;
+  padding-bottom:5px;
+  background-color:#f7f8f9;
+}
+#sub-user-center a{
+  color: #666;
+  text-decoration: none;
+  font-size:16px;
+}
+.sub-title-offset{
+  margin-left:13%;
+}
+.userinfo_item{
+  margin-top:15px;
+  font-size:16px; 
+}
+.userinfo_block{
+  padding-top:10px;
+  height:140px;
+}
+.bidinfo_block{
+  width:70%;
+  margin-left:16%;
+}
+#recent_records_qry select {
+  width: 200px;
+}
+.ui-menu .ui-menu-item {
+  font-size: 1.0em;
+}
+.overflow {
+  height:200px;
+}
+label{
+  font-weight:normal;
+}
+#user_pay a{
+  background-color:#ff8008;
+  border-color:#ff8008;
+}
+#bidinfo p{
+  font-size:16px;
+}
+#recent_records_qry label{
+  font-size:16px;
+}
+#sub_user_center div{
+  display:inline-block;
+}
+#sub_user_center div a{
+  text-decoration:none;
+}
+#sub_user_center div a:hover{
+  cursor:hand;
+  color:#ff8008;
+}
+table td a:link{
+  text-decoration: none;
+  color: #008000;
+}
+table td a:hover{
+  text-decoration:none;
+  color: red;
+  cursor: hand;
+}
+table td a:visited{
+  text-decoration: none;
+  color: #bfbfbf;
+}
+#strategy{
+  width:100%;
+}
+.bid-main{
+  width:90%;
+}
+.canvas-box{
+  background-color:#ffffff;
+}
+.canvas-title{
+  text-align:center;
+  margin-bottom:5px;
+  margin-top:5px;
+  font-size:16px;
+}
+.canvas-sep{
+  width:100%;
+  border-bottom:solid 2px #ff8002;
+}
+.canvas-body{
+  height:auto;
+}
+.canvas-interest{
+  width:60%;
+  padding:10px;
+  margin-left:20%;
+  background-color:white
+}
+.chart-descript{
+  margin-top:10px;
+}
+.interest-brief{
+  text-align:center;
+  margin-top:20px;
+}
+.interest-list-title{
+  text-align:center;
+  padding-top:10px;
+  height:50px;
+  margin-bottom:10px;
+  font-size:16px;
+  width:90%;
+  margin-left:5%;
+  border-bottom:solid 1px #d5d6d7;
+}
+.interest-list-content{
+  width:90%;
+  margin-left:5%;
+}
+

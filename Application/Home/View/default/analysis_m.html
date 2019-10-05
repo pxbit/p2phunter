@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="__ROOT__/Application/Home/View/default/css/mobile.css?v20190216">
+
+  <!-- libs -->
+  <script src="__ROOT__/Public/lib/jquery/jquery.min.js"></script>
+  <script src="__ROOT__/Public/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.js"></script>
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+</head>
+
+<body>
+  <div><input id="mbl" type="hidden" value={$mbl}></div>
+
+  <div id="content">
+    <div class="block_white">
+
+      <div class="container_fluid">
+        <div class="row">
+          <div class="col-xs-12 main-title"> 金雕猎手 </div>
+        </div>
+      </div>
+      <div class="container_fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;我们从金雕2018年前三个季度的投标中，抽取数十万信用标进行分析，希望给投资者做个参考。需要注意的是，本数据只是金雕采集到的部分数据，数据分布和全数据分布不同，分析结果仅供参考。
+            </p>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_10_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_12_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_14_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_17_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_19_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_21_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_23_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_25_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_26_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_27_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_28_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_29_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_30_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_31_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_32_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_33_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_34_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_35_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_36_1.png"/></div>
+            <div class="ana_pic_row"><img style="width:100%" alt="" src="__ROOT__/Public/pic/output_37_1.png"/></div>
+          </div>
+        </div>
+
+        <div class="row fixed_footer">
+          <div class="col-xs-4 text-center">
+            <a href="__ROOT__/home/user?mobile=1"><span class="glyphicon glyphicon-star"></span> 投标</a>
+          </div>
+
+          <div class="col-xs-4 text-center">
+            <a href="__ROOT__/home/strategy?mobile=1"><span class="glyphicon glyphicon-star"></span> 策略</a>
+          </div>
+
+          <div class="col-xs-4 text-center footer_nav_active">
+            <span class="glyphicon glyphicon-star"></span>分析
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  $( function() {
+    $( "#accordion" ).accordion({
+      heightStyle: "content",
+      collapsible: true,
+      active: false 
+    });
+  } );
+</script>
+
+
+

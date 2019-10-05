@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="__ROOT__/Application/Home/View/default/css/mobile.css?v20190216">
+
+  <!-- libs -->
+  <script src="__ROOT__/Public/lib/jquery/jquery.min.js"></script>
+  <script src="__ROOT__/Public/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.js"></script>
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+</head>
+
+<body>
+  <div><input id="mbl" type="hidden" value={$mbl}></div>
+
+  <div id="content">
+    <div class="block_white">
+
+      <div class="container_fluid">
+        <div class="row">
+          <div class="col-xs-12 main-title"> 金雕猎手 </div>
+        </div>
+      </div>
+
+      <div class="container_fluid" style="margin-bottom:70px">
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="accordion">
+              <h3>关于金雕猎手</h3>
+              <div>
+                <p>
+                金雕是一种非常厉害的猛禽，它视力极佳，可在1800米外监视一只兔子行踪，速度极快，可以322公里的时速向下俯冲，并拥有超过成人10倍的握力。 在中国的西北部，有一群哈萨克族人，他们做着一件常人觉得不可能的事情，训练金雕这种野生猛禽帮助他们打猎。金雕被驯服后，可以极大的提高猎人打猎的收益。我们期望用大数据为拍拍贷投资者训练一只智能金雕，让每个拍拍贷投资者都能成为网贷里的金雕猎手。
+                </p>
+                <p>
+                <strong>金雕猎手</strong>是拍拍贷官方认证和授权的第三方自动投标软件，基于官方提供的OpenAPI，通过大数据智能分析，对外提供专业的拍拍贷第三方自动投标服务。
+                </p>
+              </div>
+              <h3>金雕猎手诞生背景</h3>
+              <div>
+                <p>
+                我们是拍拍贷的资深用户，从2014年就开始投资拍拍贷，从最开始的安非标，网商标，赔标，一路走来，见证了拍拍贷投标越来越灵活的历史，然而随着拍拍贷OpenAPI的开放，手动投标已经力不从心，官方自定义投标常常投不上，而且不够灵活，无法满足我们的需求。于是作为资深码奴的我们，决定写一个自己的投标软件，一方面自己满足自己需要，另一方面也给投资者多一个选择。
+                </p>
+              </div>
+              <h3>金雕猎手的理念</h3>
+              <div>
+                <p> <strong>简洁、易用、可靠！</strong> </p>
+              </div>
+              <h3>关于拍拍贷</h3>
+              <div>
+                <p>
+                拍拍贷（上海拍拍贷金融信息服务有限公司）成立于2007年6月，总部位于国际金融中心上海，并于2015年4月完成C轮融资。9年来累计帮助借款用户完成230万笔成功借款，帮助投资用户完成1300万笔成功投资。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       <div class="row fixed_footer">
+         <div class="col-xs-4 text-center">
+           <a href="__ROOT__/home/user?mobile=1"><span class="glyphicon glyphicon-star"></span> 投标</a>
+         </div>
+
+         <div class="col-xs-4 text-center">
+           <a href="__ROOT__/home/strategy?mobile=1"><span class="glyphicon glyphicon-star"></span> 策略</a>
+         </div>
+
+         <div class="col-xs-4 text-center footer_nav_active">
+           <span class="glyphicon glyphicon-star"></span> 关于
+         </div>
+       </div>
+
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  $( function() {
+    $( "#accordion" ).accordion({
+      heightStyle: "content",
+      collapsible: true,
+      active: false 
+    });
+  } );
+</script>
+

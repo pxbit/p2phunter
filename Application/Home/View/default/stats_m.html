@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="__ROOT__/Public/lib/titatoggle/titatoggle-dist-min.css">
+  <link rel="stylesheet" href="__ROOT__/Public/lib/jquery-confirm/jquery-confirm.min.css">
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Public/lib/datatables/datatables.min.css" />
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Public/lib/datatables/responsive.dataTables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Application/Home/View/default/css/mobile.css?v=20190216">
+
+  <!-- libs -->
+  <script src="__ROOT__/Public/lib/jquery/jquery.min.js"></script>
+  <script src="__ROOT__/Public/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-confirm/jquery-confirm.min.js"></script>
+  <script src="__ROOT__/Public/lib/datatables/datatables.min.js"></script>
+  <script src="__ROOT__/Public/lib/datatables/dataTables.responsive.min.js"></script>
+  <!-- modules' js  -->
+  <script src="__ROOT__/Public/js/stats_m.js"></script>
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+</head>
+
+<body>
+  <div><input id="mbl" type="hidden" value={$mbl}></div>
+
+  <div class="block_white">
+    <div class="container_fluid">
+
+      <div class="row">
+        <div class="col-xs-12 main-title"> 金雕猎手 </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="nav nav-pills"  style="padding-left:25%; padding-right:20%">
+            <li ><a href="__ROOT__/home/strategy?mobile=1">策略设置</a></li>
+            <li class="menu-pill "><a href="__ROOT__/home/strategy/stats?mobile=1">策略回溯</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container_fluid" style="margin-bottom:70px">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>&nbsp;</p>
+          <p> 最后更新时间:<span id="update-time"></span> </p>
+          <fieldset class="box_container">
+            <table id="tbl-stat" class="display nowrap" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <td>策略名称</td>
+                  <td>平均投资利率</td>
+                  <td>30日逾期率</td>
+                  <td>90日逾期率</td>
+                  <td>平均投资期限</td>
+                  <td>1期30日逾期</td>
+                  <td>2期30日逾期</td>
+                  <td>3期30日逾期</td>
+                </tr>
+              </thead>
+            </table>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <p>&nbsp;</p>
+          <p>说明:</p>
+          <fieldset class="box_container">
+            <p>
+            <strong>30日逾期率: </strong> 已产生30日逾期的逾期本金 与 已到期超过30日的所有本金的比值。 90日逾期率也类似。
+            </p>
+            <p>
+            <strong>1期30日逾期: </strong>第一期还款逾期超过30日至今未还的标数 与 所有第一期还款日已经到期30日以上的标数量的比值。
+            </p>
+            <p>
+            <strong>2期30日逾期: </strong>第二期还款逾期超过30日至今未还的标数 与 所有第二期还款日已经到期30日以上的标数量的比值。
+            </p>
+            <p>
+            3期以此类推。 根据历史统计， 30日以上逾期约15-20%的概率可以收回。
+            </p>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="row fixed_footer">
+         <div class="col-xs-4 text-center">
+           <a href="__ROOT__/home/user?mobile=1"><span class="glyphicon glyphicon-star"></span> 投标</a>
+         </div>
+
+         <div class="col-xs-4 text-center footer_nav_active">
+           <span class="glyphicon glyphicon-star"></span> 策略
+         </div>
+
+         <div class="col-xs-4 text-center">
+           <a href="__ROOT__/home/about?mobile=1"><span class="glyphicon glyphicon-star"></span> 关于</a>
+         </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <!-- bootstrap v3.3.7 -->
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.min.css">
+  <script>
+  $(document).ready(function(){
+  /* styling nav status */
+   $("ul.nav.nav-pills.nav-justified li:eq(2)").addClass("active");
+   auth_data = {$authStatus};
+   var rows = "";
+   for (var id in auth_data){
+	   var app = auth_data[id];
+	   var name = "线程" + app['AppIndex'];
+	   var appid = app['AppId']
+	   var actionLink = "https://ac.ppdai.com/oauth2/login?AppID=" 
+			   + appid 
+			   + "&ReturnUrl=http://www.p2phunter.cn/home/user/auth/i/" 
+			   + appid 
+			   + "/";
+	   if (typeof(app['Status']) == "undefined")
+		   var status = "未授权";
+	   else if(app['Status'] < 0)
+		   var status = "授权失效";
+	   else
+		   var status = "授权成功";
+	   if (status == "授权成功" && typeof(app['RTExpireDate']) != "undefined"){
+		   var date = app['RTExpireDate'];
+	   }else{
+		   var date = "";
+	   }
+	   
+	   var row = "<tr>"
+       		+ "<td>" + name + "</td>"
+       		+ "<td><a href = \"" + actionLink + "\">授权 </a></td>"
+       		+ "<td>" + status + "</td>"
+       		+ "<td>" + date + "</td>"
+       		+ "</tr>";
+     	if (app['AppIndex'] != 1)
+       		rows = rows + row;
+   }
+   $(".table tbody").html(rows)
+   
+  });
+</script>
+</head>
+
+<body >
+	<include file="./Application/Home/View/default/header.html" />
+	<div id="main" class="bodyblock">
+	  <div id = "content" class="contentblock" >
+	    <div class="spaceholder"></div>
+	    <div class="about_block">
+	    	<h3>请授权多个线程，提高投标效率：</h3>
+	    	<div>
+	    		<table class="table table-striped">
+				    <thead>
+				    <tr>
+				        <th>线程名称</th>
+				        <th>授权操作</th>
+				        <th>授权状态</th>
+				        <th>失效日期</th>
+				    </tr>
+				    </thead>
+				    <tbody>
+				    </tbody>
+				</table>
+	    	</div>
+		</div>
+	  </div>
+	</div>
+	<include file="./Application/Home/View/default/footer.html" />
+</body>
+</html>
+

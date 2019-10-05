@@ -1,0 +1,33 @@
+<!--override bootstrap -->
+<style>
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #f0f0f0;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #ff8002;
+  background-color: transparent;
+}
+.btn{
+  border: 0px;
+}
+</style>
+<nav class="navbar navbar-default" style="background-color:#f8f8f8; font-size:16px;
+  padding-top:0px; padding-bottom:0px; margin-bottom:0px;">
+  <div style="margin-top:5px; display:inline-block; float:left; ">
+    <span><img src="__ROOT__/Public/pic/logo.png" width="130"></span>
+  </div>
+  <div "container" style="width:60%; float:left; margin-left:110px; margin-top:0px; padding-top:0px;">
+    <div class="">
+      <ul id="usermenu" class="nav nav-pills nav-justified" style="margin-top:0px;" >
+        <volist name="navItems" id="vo">
+        <li ><a href="{$vo['url']}">{$vo['title']}</a> </li>
+        </volist>
+      </ul>
+    </div>
+  </div>
+  <div id="header_login_out" class="btn" style="margin-right:30px;">退出登录</div>
+</nav>

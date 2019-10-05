@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <!-- external libs -->
+  <!-- bootstrap v3.3.7 -->
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.css">
+  <include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <style>
+    /* remove or reset the style by bootstrap because of the conflict */
+    body *{
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+    }
+    .close {
+    }
+  </style>
+</head>
+<include file="./Application/Home/View/default/header.html" />
+<body >
+<div id="main" class="bodyblock">
+  <div id = "content" class="contentblock" >
+    <div class="block_trnsp">
+    	<div class="strategy_info">
+        	<p1> 策略设置</p1>
+        	<p></p>
+        </div>
+    </div>
+    <div class="block_white">
+    	<div class = "global_setting">
+          <label class = "global_setting_label">起投利率</label><input  class = "global_setting_value" id = "MinRate" type = "text" /> 
+          <label class = "global_setting_label">保留金额</label><input  class = "global_setting_value"  id = "MinBalance" type = "text" />
+          <label  class = "global_setting_label">起投月份</label><input  class = "global_setting_value"  id = "MinMonth" type = "text" />
+          <label  class = "global_setting_label">最长月份</label><input  class = "global_setting_value"  id = "MaxMonth" type = "text" />
+		  <span class = "simplebutton" id="save_global_setting">保存</span>
+    	</div>
+    </div>
+    <div class="block_trnsp">
+      <div class="strategy_info">
+      <p>推荐信标策略全开，小资金推荐设置单标金额50，大资金单标金额推荐设置为资金量/5000, 将<strong><font style="font-size:17px">鼠标悬停在策略名称上</font></strong>可以查看策略设置建议</p>
+      <p><strong><font style="font-size:18px">新建策略</font></strong>：建立自己的自定义策略； <strong><font style="font-size:18px">策略回溯</font></strong>：查看策略本平台用户投标回溯统计。 更多详情请参阅本页底部说明，欢迎加入QQ群： 579014066，了解金雕猎手动态。</p>
+      </div >
+      <div class="new_strategy">
+      <div id="strategy_stats" class="bt_link">策略回溯</div><div id="diy_new_strategy" class="bt_link">新建策略</div>
+      </div>
+    </div>
+        
+     <div class="block_white">
+
+      <div class="strategy_setting">
+              <table class="strategy_setting_table" id="strategy_setting_table">
+                      <tbody><tr>
+                          <th>策略名称</th>
+                          <th>平均投资利率</th>
+                          <th>历史坏标率</th>
+                          <th>预期年化收益率</th>
+                          <th>单次投标金额</th>
+                          <th>状态</th>
+                      </tr>   
+                  </tbody>
+              </table>
+      </div>
+      <div class="strategy_setting_option">
+        <p><span id="strategy_all_open">全部开启</span><span id="strategy_all_close">全部关闭</span> <span id = "strategy_suggest_open">查看回溯</span></p>
+      </div>
+    </div>
+    <div class="block_trnsp">
+      <div class="strategy_info">
+      <p1> 策略说明</p1>
+      <p></p>
+      <p>策略投标费率 ，金雕信用标策略0.2%，自定义或者赔标 0.15%，另不定时会有充值优惠详见充值页面！</p>
+      <p>自定义策略请点击右上角新建策略进入。页面有详细说明，每人最多10条，不能删除.</p>
+      <p>保存后在本页<font color="#d000f0">点击自定义策略名称可以修改</font></p>
+      <p>只有在拍拍贷做过风险测评且评级符合条件的才能用金雕猎手投资信用标，如果您不清楚如何测评，请在QQ群里联系管理员</p>
+      <p>本平台所有策略，均会自动用券.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<include file="./Application/Home/View/default/footer.html" />
+<script src="__ROOT__/Public/js/strategy.js?v=20190226"></script>
+
+</body>
+</html>
+<script>
+  $(document).ready(function(){
+  /* styling nav status */
+   $("ul.nav.nav-pills.nav-justified li:eq(1)").addClass("active");
+  });
+</script>

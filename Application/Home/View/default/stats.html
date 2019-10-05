@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.css">
+<include file="./Application/Home/View/default/common_resource_and_setting.html" />
+<script type="text/javascript" src="__ROOT__/Public/js/stats.js"></script>
+</head>
+
+<include file="./Application/Home/View/default/header.html" />
+<body >
+<div id="main" class="bodyblock">
+  <div id = "content" class="contentblock" >
+    <div class="block_trnsp">
+      <div class="strategy_info">
+      <p1> 策略回溯</p1>、
+      <p></p>
+      <p>30日逾期率指: <font color = "purple">已产生30日逾期的逾期本金</font> 与 <font color = "green">已到期超过30日的所有本金</font>的比值。 90日逾期率也类似。 </p>
+      <p>1期30日逾期指: <font color = "purple">第一期还款逾期超过30日至今未还的标数</font> 与  <font color = "green">所有第一期还款日已经到期30日以上的标数量</font>的比值。</p>
+      <p>2期30日逾期指: <font color = "purple">第二期还款逾期超过30日至今未还的标数</font> 与  <font color = "green">所有第二期还款日已经到期30日以上的标数量</font>的比值。</p>
+      <p>3期以此类推。 根据历史统计， 30日以上逾期约15-20%的概率可以收回。</p>
+      <p> </p>
+      </div >
+    </div>
+        
+     <div class="block_white">
+
+      <div class="strategy_setting">
+              <table class="strategy_setting_table" id="strategy_setting_table">
+                      <tbody><tr>
+                          <th>策略名称</th>
+                          <th>平均投资期限</th>
+                          <th>平均投资利率</th>
+                          <th>30日逾期率</th>
+                          <th>90日逾期率</th>
+                          <th>1期30日逾期</th>
+                          <th>2期30日逾期</th>
+                          <th>3期30日逾期</th>
+                      </tr>
+                   
+                             
+                  </tbody>
+              </table>
+      </div>
+    </div>
+    <div class="block_trnsp">
+      <div class="strategy_setting_option">
+        <p><span id="strategy_diy_save">返回</span></p>
+      </div>
+    </div>
+  
+  </div>
+      
+</div>
+<include file="./Application/Home/View/default/footer.html" />
+</body>
+
+
+</html>

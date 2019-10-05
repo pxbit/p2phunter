@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Public/lib/datatables/datatables.min.css" />
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Public/lib/datatables/responsive.dataTables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Application/Home/View/default/css/mobile.css?v=20190216">
+
+  <!-- libs -->
+  <script src="__ROOT__/Public/lib/jquery/jquery.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-cookie/jquery.cookie.min.js"></script>
+  <script src="__ROOT__/Public/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.js"></script>
+  <script src="__ROOT__/Public/lib/datatables/datatables.min.js"></script>
+  <script src="__ROOT__/Public/lib/datatables/dataTables.responsive.min.js"></script>
+  <script src="__ROOT__/Public/lib/chartjs/chart.bundle.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery/jquery-migrate.min.js"></script>
+  <!-- modules' js  -->
+  <script src="__ROOT__/Public/js/base.js"></script>
+  <script src="__ROOT__/Public/js/datatable_common.js"></script>
+  <script src="__ROOT__/Public/js/datepick_common.js"></script>
+  <script src="__ROOT__/Public/js/chart_common.js?v=20181209"></script>
+  <script src="__ROOT__/Public/js/plot.js?v=20181215"></script>
+  <script src="__ROOT__/Public/js/user_common.js"></script>
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+</head>
+
+<body>
+  <div><input id="mbl" type="hidden" value={$mbl}></div>
+
+  <div id="content">
+    <div class="block_white">
+      <div class="container_fluid">
+
+        <div class="row">
+          <div class="col-xs-12 main-title"> 金雕猎手 </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-11 col-xs-offset-1">
+              <ul class="nav nav-pills" style="padding-left:5%; padding-right:5%;">
+                <li id="menu-bid-today"><a href="__ROOT__/home/user?mobile=1">今日投标</a></li>
+                <li id="menu-interest"><a href="__ROOT__/home/user/analyseInterest?mobile=1">收益统计</a></li>
+                <li id="menu-history"><a href="__ROOT__/home/user/statisticsBid?mobile=1">历史记录</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+
+      <if condition = "$type eq 1">
+      <script src="__ROOT__/Public/js/user.js?v=20181025"></script>
+      <script src="__ROOT__/Public/js/bid_today.js"></script>
+      <div class="container_fluid" style="margin-bottom:70px">
+        <div class="row">
+          <div class="col-xs-12">
+            <p></p>
+            <p>欢迎您！{$username}</p>
+            <p>拍拍贷余额：<span id="balance"> </span> 元</p>
+            <p>雕币余额：<span id="money"> {$Score} </span> 雕币（约 <span id="money"> {$Money} </span> 元）</p>
+            <!--
+            移动端暂时不支持微信充值
+            <div>
+              <button class="btn btn-block" id="btn_pay">微信充值（雕币）</button>
+            </div>
+            -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <fieldset class="box_container summary">
+              <legend class="legend">总体统计</legend>
+              <dl>
+                <dt>开启策略</dt>
+                <dd>系统：<span id="enable_sys_strategy_count"> </span> 个</dd>
+                <dd>自定义：<span id="enable_diy_strategy_count"></span> 个</dd>
+              </dl>
+              <dl>
+                <dt>累计投标</dt>
+                <dd>额度：<span id="total_bid_amount"></span> 元</dd>
+                <dd>次数：<span id="total_bid_count"></span> 个</dd>
+              </dl>
+              <dl>
+                <dt>收益统计</dt>
+                <dd>收益：<span id="total_bid_gain"></span> 元</dd>
+                <dd>收款：<span id="total_repay_count"></span> 次</dd>
+              </dl>
+              <dl>
+                <dt>逾期统计</dt>
+                <dd>逾期(7)：<span id="total_delay_amount"></span> 元/<span id="total_delay_ratio"></span>%</dd>
+              </dl>
+            </fieldset>
+          </div>
+        </div>
+        <p>&nbsp;</p>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+          <fieldset class="box_container">
+            <legend class="legend">今昨投标</legend>
+            <p>今日投标：<span id="tdy_bid_count"></span> 单/<span id="tdy_bid_amount"></span> 元</p>
+            <p>昨日投标：<span id="yes_bid_count"></span> 单/<span id="yes_bid_amount"></span> 元</p>
+          </fieldset>
+          </div>
+        </div>
+        <p>&nbsp;</p>
+        <div class="row">
+          <div class="col-xs-12">
+            <fieldset class="box_container">
+              <legend class="legend">近期投资记录</legend>
+              <div id="recent_records_qry" class="text-left" >
+                <p>
+                <label class="label">投标策略: </label>
+                <select name="Type" id="StrategyType">
+                  <option value="-1">所有</option>
+                </select>
+                </p>
+                <p>
+                <label class="label">查看期限: </label>
+                <select name="Time" id="Time">
+                  <option selected="selected" value="3">三天以内</option>
+                  <option value="7">一周以内</option>
+                  <option value="30">一个月以内</option>
+                  <option value="90">三个月以内</option>
+                  <option value="180">半年以内</option>
+                  <option value="0">自定义</option>
+                </select>
+                <input id="qrybid" class="ui-button ui-widget ui-corner-all" type="button" value="查询" >
+                <div id="user_define_qry" style="display:none">
+                  开始: <input type="text" id="date_start" size="10">
+                  结束: <input type="text" id="date_end" size="10">
+                </div>
+                </p>
+                <table id="tblBidlist" class="display nowrap" width="100%" cellspacing="0">
+                  <thead>
+                    <td>投标时间</td>
+                    <td>投标策略</td>
+                    <td>策略类型</td>
+                    <td>投标金额(元)</td>
+                    <td>投标费用(雕币)</td>
+                    <td>投标号</td>
+                  </thead>
+                </table>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 chart">
+            <h3>今日标量分布</h3>
+            <div class="box canvas">
+              <canvas id="canvas-bidamount">
+              暂无数据显示
+              </canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden">
+          <div class="col-xs-12 chart">
+            <h3>今日风险等级分布（单）</h3>
+            <div class="box canvas">
+              <canvas id="canvas-riskrank">
+              暂无数据显示
+              </canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden">
+          <div class="col-xs-12 chart">
+            <h3>今日学历分布（单）</h3>
+            <div class="box canvas">
+              <canvas id="canvas-edudegree">
+                暂无数据显示
+              </canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden">
+          <div class="col-xs-12 chart">
+            <h3>今日年龄分布(单)</h3>
+            <div class="box canvas">
+              <canvas id="canvas-age">
+                暂无数据显示
+              </canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden">
+          <div class="col-xs-12 chart">
+            <h3>今日策略分布(单)</h3>
+            <div class="box canvas">
+              <canvas id="canvas-strategy">
+                暂无数据显示
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 历史记录 -->
+      <elseif condition="$type eq 2"/>
+      <script src="__ROOT__/Public/js/bid.js"></script>
+      <div class="container_fluid" style="margin-bottom:70px">
+        <div class="row">
+          <div class="col-xs-12 chart">
+            <h3>历史投标量分布</h3>
+            <div class="box canvas">
+              <canvas id="canvas-bidamount"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 chart">
+            <h3>风险等级分布（%）</h3>
+            <div class="box canvas">
+              <canvas id="canvas-riskrank"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 chart">
+            <h3>学历分布（%）</h3>
+            <div class="box canvas">
+              <canvas id="canvas-edudegree"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 chart">
+            <h3>年龄分布(%) </h3>
+            <div class="box canvas">
+              <canvas id="canvas-age"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 chart">
+            <h3>策略分布(%) </h3>
+            <div class="box canvas">
+              <canvas id="canvas-strategy"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 收益统计 -->
+      <elseif condition="$type eq 3"/>
+      <script src="__ROOT__/Public/js/interest.js"></script>
+      <!-- 收益统计 -->
+      <div class="container_fluid" style="margin-bottom:70px">
+        <div class="row">
+          <div class="col-xs-12">
+            <p></p>
+            <p>昨日收益：{$interest['yesterday']}元</p>
+            <p>累计收益：{$interest['total']} 元</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 chart" >
+            <h3>收益/逾期增张图</h3>
+            <div class="box canvas">
+              <canvas id="canvas_interest_increase"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <p>&nbsp;</p>
+            <fieldset class="box_container delay">
+              <legend class="legend">逾期统计表(按策略)</legend>
+              <table id="tblstat-stg" class="display nowrap" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <td>策略名称</td>
+                    <td>90逾期率(%)</td>
+                    <td>30逾期率(%)</td>
+                    <td>90逾期标/投标数</td>
+                    <td>30逾期标/投标数</td>
+                    <td>平均投资期限(期)</td>
+                    <td>平均投资利率(%)</td>
+                    <td>已投金额</td>
+                    <td>已还清/投标数</td>
+                  </tr>
+                </thead>
+              </table>
+              <p> 最后更新时间:<span id="stg-update-time"></span> </p>
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <p>&nbsp;</p>
+            <fieldset class="box_container">
+              <legend class="legend">逾期统计表(按月份)</legend>
+              <table id="tblstat-mth" class="display nowrap" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <td>月份</td>
+                    <td>90逾期率(%)</td>
+                    <td>30逾期率(%)</td>
+                    <td>90逾期标/投标数</td>
+                    <td>30逾期标/投标数</td>
+                    <td>平均投资期限(期)</td>
+                    <td>平均投资利率(%)</td>
+                    <td>已投金额</td>
+                    <td>已还清/投标数</td>
+                  </tr>
+                </thead>
+              </table>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      </if>
+
+      <div class="fixed_footer">
+        <div class="container_fluid">
+          <div class="row">
+            <div class="col-xs-4 text-center footer_nav_active">
+              <span class="glyphicon glyphicon-star"></span> 投标
+            </div>
+            <div class="col-xs-4 text-center">
+              <a href="__ROOT__/home/strategy?mobile=1"><span class="glyphicon glyphicon-star"></span> 策略</a> 
+            </div>
+            <div class="col-xs-4 text-center">
+              <a href="__ROOT__/home/about?mobile=1"><span class="glyphicon glyphicon-star"></span> 关于</a> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+  $(document).ready(function(){
+    if("{$type}" == 1){
+      styleMenu(0 /* bid */);
+    }else if("{$type}" == 2){
+      styleMenu(2 /* history */);
+    }else if("{$type}" == 3){
+      styleMenu(1 /* interest */);
+
+      $('#tblstat-stg').DataTable({
+        "ajax": {
+          "url":Think.U('Home/User/readOvdStat'),
+          "data":{"type":"stg"},
+          "dataSrc": function(data){
+            $("#stg-update-time").html(data.time);
+            return data.content;
+          }
+        },
+        "columns": [
+          { "data": "策略名", "width":"12%"},
+          { "data": "90日逾期率" },
+          { "data": "30日逾期率" },
+          { "data": "90日逾期标/投标数" },
+          { "data": "30日逾期标/投标数" },
+          { "data": "平均投资期限", "width":"12%"},
+          { "data": "平均投资利率" },
+          { "data": "已投金额" },
+          { "data": "已还清/投标数" }
+        ],
+        ordering: false,
+        pageLength: 5,
+        responsive: true,
+        dom: 'rtip'
+      });
+
+      $('#tblstat-mth').DataTable({
+        "ajax":{
+          "url":Think.U('Home/User/readOvdStat'),
+          "data":{"type":"mth"},
+          "dataSrc": function(data){
+            $("#mth-update-time").html(data.time);
+            return data.content;
+          }
+        },
+        "columns": [
+          { "data": "月份", "width":"8%"},
+          { "data": "90日逾期率" },
+          { "data": "30日逾期率" },
+          { "data": "90日逾期标/投标数" },
+          { "data": "30日逾期标/投标数" },
+          { "data": "平均投资期限", "width":"12%"},
+          { "data": "平均投资利率" },
+          { "data": "已投金额" },
+          { "data": "已还清/投标数" }
+        ],
+        ordering: false,
+        pageLength: 5,
+        responsive: true,
+        dom: 'rtip'
+      });
+    }else if("{$type}" == 4){
+      /* for further*/
+    } else if("{$type} == 5"){
+      /* for further*/
+    }
+  });
+
+
+  function styleMenu(menuid) {
+    var o = $(".nav.nav-pills").children();
+    //var o = $(".nav.nav-pills:contains('今日投标')");
+
+    var idx = menuid;
+    for (var i = 0; i < o.length; i++){
+      $(o).removeClass("menu-pill active");
+    }
+    $(o[idx]).addClass("menu-pill active");
+  }
+
+</script>
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>支付详情</title>
+        <script type="text/javascript">
+  var ThinkPHP = window.Think = {
+          "ROOT"   : "__ROOT__",
+          "APP"    : "__APP__",
+          "PUBLIC" : "__PUBLIC__",
+          "DEEP"   : "{:C('URL_PATHINFO_DEPR')}",
+          "MODEL"  : ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+          "VAR"    : ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
+  }
+      var publicurl = "__PUBLIC__";
+    var PUBLIC= "__public__";
+    var APP = "__APP__";
+    var ROOT = "__ROOT__";
+  </script>
+    <link href="__ROOT__/Application/Home/View/default/css/wechat_pay.css" rel="stylesheet" media="screen">
+    <!--  <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css"> -->
+    <style>
+        .text-success {
+            color: #468847;
+            font-size: 2.33333333em;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div class="body">
+    <h1 class="mod-title">
+        <span class="ico_log ico-<?php echo (int)$_GET['type']?>"></span>
+    </h1>
+
+    <div class="mod-ct">
+        <div class="order">
+        </div>
+        <div class="amount" id="money">￥<?php echo (float)$_GET["money"] ?></div>
+        <h1 class="text-center text-success"><strong><i class="fa fa-check fa-lg"></i> {$paystatus}</strong></h1>
+
+        <div class="detail detail-open" id="orderDetail" style="display: block;">
+            <dl class="detail-ct" id="desc">
+                <dt>金额</dt>
+                <dd><?php echo (float)$_GET["money"] ?></dd>
+                <dt>商户订单：</dt>
+                <dd><?php echo htmlentities($_GET["pay_id"]) ?></dd>
+                <dt>流水号：</dt>
+                <dd><?php echo htmlentities($_GET["pay_no"]) ?></dd>
+                <dt>付款时间：</dt>
+                <dd><?php echo date("Y-m-d H:i:s", (int)$_GET["pay_time"]) ?></dd>
+                <dt>状态</dt>
+                <dd>{$paystatus}</dd>
+            </dl>
+
+
+        </div>
+
+        <div class="tip-text">
+        </div>
+
+
+    </div>
+    <div class="foot">
+        <div class="inner">
+            <p>{$paytips}</p>
+        </div>
+    </div>
+
+</div>
+<script>
+    alert('{$paystatus} {$paytips}')
+    setTimeout(function () {
+        //这里可以写一些后续的业务
+      location.href = ROOT+"/home/user.html";
+    }, 10000)
+</script>
+</body>
+</html>

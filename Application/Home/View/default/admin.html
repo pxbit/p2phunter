@@ -1,0 +1,257 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Public/lib/datatables/datatables.min.css"/>
+  <link href="__ROOT__/Application/Home/View/default/css/user.css?v=20180815" rel="stylesheet" type="text/css">
+  <!-- libs -->
+  <script src="__ROOT__/Public/lib/jquery/jquery.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-cookie/jquery.cookie.min.js"></script>
+  <script src="__ROOT__/Public/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="__ROOT__/Public/lib/datatables/datatables.min.js"></script>
+  <script src="__ROOT__/Public/lib/chartjs/chart.bundle.min.js"></script>
+  <!-- modules' js  -->
+  <script src="__ROOT__/Public/js/base.js"></script>
+  <script src="__ROOT__/Public/js/datatable_common.js"></script>
+  <script src="__ROOT__/Public/js/chart_common.js"></script>
+  <script src="__ROOT__/Public/js/plot.js"></script>
+</head>
+
+<body >
+  <include file="./Application/Home/View/default/header.html" />
+  <p></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              每日投标数据
+            </h3>
+          </div>
+          <div class="panel-body">
+            <table id="tblBidlist" class="display compact" width="100%" cellspacing="0">
+              <thead>
+                <td>时间</td>
+                <td>总数量</td>
+                <td>总金额(元)</td>
+                <td>总费用(雕币)</td>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              每日投标分布
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div class="canvas-body">
+              <canvas id="canvas-sysbid"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              每日投标分布
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div class="canvas-body">
+              <canvas id="canvas-sysbid"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              今日投标分布
+            </h3>
+          </div>
+          <div class="panel-body">
+            <table id="tblUserBidToday" class="display compact" width="100%" cellspacing="0">
+              <thead>
+                <td>用户ID</td>
+                <td>投标数</td>
+                <td>总投金额(元)</td>
+                <td>单笔最大</td>
+                <td>单笔最小</td>
+                <td>单笔平均</td>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              活跃用户信息
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div>
+              <label>用户查询:</label>
+              <input type="text" value="" id="searchKey" placeholder="用户名或ID">
+              <button id="qryuser" class="ui-button ui-widget ui-corner-all">查询</button>
+            </div>
+              <div>
+                <table id="tblValidUserInfo" class="display compact" width="100%" cellspacing="0">
+                  <thead>
+                    <td>用户ID</td>
+                    <td>用户名</td>
+                    <td>拍拍贷余额(元)</td>
+                    <td>金雕余额(雕币)</td>
+                    <td>到期时间</td>
+                  </thead>
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              用户投标总量排名
+            </h3>
+          </div>
+          <div class="panel-body">
+              <div>
+                <table id="tblRankBidUser" class="display compact" width="100%" cellspacing="0">
+                  <thead>
+                    <td>用户ID</td>
+                    <td>总投标数</td>
+                    <td>总投标金额(元)</td>
+                  </thead>
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              漏单统计
+            </h3>
+          </div>
+          <div class="panel-body">
+              <div>
+                <table id="tblMissBid" class="display compact" width="100%" cellspacing="0">
+                  <thead>
+                    <td>日期</td>
+                    <td>失败不扣费</td>
+                    <td>成功标的失败，确定退款</td>
+                    <td>其他平台</td>
+                    <td>铁定漏单</td>
+                    <td>金额不一致</td>
+                    <td>总计</td>
+                  </thead>
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+
+function initQueryTable(table, ajaxUrl){
+  var settings         = {};
+  settings.ajax_url    = ajaxUrl;
+  settings.ajax_data   = {};
+  settings.column_defs = {} ;
+  var config = getDTConfig(settings)
+  table.dataTable(config);
+}
+
+$(document).ready(function(){
+  var tblSysBid         = $("#tblBidlist");
+  var tblUserBidToday   = $("#tblUserBidToday");
+  var tblValidUserInfo  = $("#tblValidUserInfo");
+  var ajaxUrl;
+
+  ajaxUrl = Think.U('Home/Admin/showSysBids');
+  initQueryTable(tblSysBid, ajaxUrl);
+
+  ajaxUrl = Think.U('Home/Admin/showUserBidToday');
+  initQueryTable(tblUserBidToday, ajaxUrl);
+
+  ajaxUrl = Think.U('Home/Admin/showValidUserInfo');
+  initQueryTable(tblValidUserInfo, ajaxUrl);
+  $('#qryuser').click(function () {
+    var table = $("#tblValidUserInfo").DataTable();
+    table.settings()[0].ajax.data = {"searchKey": $('#searchKey').val() };
+    table.ajax.reload();
+  });
+  $('#searchKey').keyup(function(){
+    if($('#searchKey').val() != ""){
+      return false;
+    }
+    var table = $("#tblValidUserInfo").DataTable();
+    table.settings()[0].ajax.data = {"searchKey": $('#searchKey').val() };
+    table.ajax.reload();
+  })
+
+  var tblRankBidUser = $("#tblRankBidUser");
+  ajaxUrl = Think.U('Home/Admin/rankUserBid');
+  initQueryTable(tblRankBidUser, ajaxUrl);
+
+  var tblMissBid = $("#tblMissBid");
+  ajaxUrl = Think.U('Home/Admin/statMissingVolume');
+  initQueryTable(tblMissBid, ajaxUrl);
+
+  $.post(Think.U('Home/Admin/statDistSysBids'),
+    {},
+    function(data,status){
+      var dtBids   = parseAjax(data, 2,'sysbid');
+      var settings = new Object();
+
+      settings.x = dtBids[0];
+      settings.y = [
+        {
+          title:  "每日投标数",
+          data : dtBids[1],  //取出y值
+          color: "#ff8002"
+        },
+      ];
+      settings.type       = 'line';
+      settings.title_text = '系统投标数分布';
+      settings.xAxesLabel = '日期';
+      settings.yAxesLabel = '投标数';
+      plotchart(settings, "canvas-sysbid");
+    });
+
+
+})
+
+</script>

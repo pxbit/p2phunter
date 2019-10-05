@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+.login-form {
+  background-color:#fdfdfd;
+  width:400px;
+  height:280px;
+  border:1px gray;
+  font-size:16px;
+  text-align:center;
+  box-shadow: 10px 10px 5px #888888;
+  padding:100px;
+}

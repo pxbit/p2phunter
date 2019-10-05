@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+.big_navi {
+  width:1152px;
+  height:600px;;
+  text-align:center;
+  overflow:hidden;
+  margin:auto;
+}

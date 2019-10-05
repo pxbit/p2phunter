@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="__ROOT__/Application/Home/View/default/css/mobile.css?v20190216">
+
+  <!-- libs -->
+  <script src="__ROOT__/Public/lib/jquery/jquery.min.js"></script>
+  <script src="__ROOT__/Public/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.js"></script>
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+</head>
+
+<body>
+  <div><input id="mbl" type="hidden" value={$mbl}></div>
+
+  <div id="content">
+    <div class="block_white">
+
+      <div class="container_fluid">
+        <div class="row">
+          <div class="col-xs-12 main-title"> 金雕猎手 </div>
+        </div>
+      </div>
+
+      <div class="container_fluid" style="margin-bottom:70px">
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="accordion">
+              <h3>什么是金雕猎手?</h3>
+              <div>
+                <p>
+                金雕猎手是基于拍拍贷OpenAPI的第三方自动投标软件，解决了以下拍拍贷投资者的痛点:
+                <ul>
+                  <li>看标累</li>
+                  <li>抢标难</li>
+                  <li>投标盲目</li>
+                </ul>
+                </p>
+              </div>
+              <h3>怎样成为金雕猎手?</h3>
+              <div>
+                <p> 1. 你必须有一个拍拍贷账户，如果你还没有可以先去注册拍拍贷。 </p>
+                <p> 2. 如果你已有拍拍贷账户，可以在首页=>授权登录=>金雕猎手=>策略设置=>打开选定策略。</p>
+                <p> 3. 金雕猎手采用拍拍贷授权登录，无需额外注册。</p>
+              </div>
+              <h3>拍拍贷官方自带自动投标,为何要用金雕猎手?</h3>
+              <div>
+                <p> 拍拍贷有自动投标，但是其存在如下几个问题：</p>
+                <p>
+                <ul>
+                  <li>用户多，服务器负载大，投标慢。</li>
+                  <li>拍拍贷须从平台整体角度考虑兼顾投资者和借款人利益，而金雕猎手专注于拍拍贷投资者的利益。</li>
+                  <li>拍拍贷官方策略, 无法满足用户多样性的需求，金雕猎手专注于高息六月信用标，快速回归检测逾期率，及时调整投资策略。</li>
+                </ul>
+                </p>
+                <p> 金雕猎手作为一个年轻的平台，投资快，投标准，设置简单。无需注册，授权登录后一键开启。 </p>
+              </div>
+              <h3>金雕猎手如何收费?</h3>
+              <div>
+                <p>
+                目前金雕猎手从2017年11月1日开始收费，费率为投标额0.2%
+                </p>
+              </div>
+
+              <h3>金雕猎手和拍拍贷是什么关系?</h3>
+              <div>
+                <p>
+                金雕猎手是拍拍贷开放平台授权认证的第三方投标软件，除此之外没有任何关系。
+                </p>
+              </div>
+
+              <h3>拍拍贷不还钱的人多吗?</h3>
+              <div>
+                <p>
+                拍拍贷是一个纯信用撮合平台，虽然老赖很多，可是好人更多, 老赖所占比例就小了。尤其是经过金雕猎手策略过滤 ，平均坏账率降至0.5%以下，可以用收益覆盖风险。
+                </p>
+              </div>
+
+              <h3>拍拍贷可信吗?</h3>
+              <div>
+                <p>
+                拍拍贷是一个纯信用撮合平台，依靠收取交易手续费赚钱，平台风险显著低于其他P2P平台。如今拍拍贷已经走过了10周年，有红杉资本和诺亚财富投资，是国内第一家P2P平台。
+                </p>
+              </div>
+
+              <h3>联系我们?</h3>
+              <div>
+                <p>
+                我们竭诚为您服务, QQ群：579014066
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+       <div class="row fixed_footer">
+         <div class="col-xs-4 text-center">
+           <a href="__ROOT__/home/user?mobile=1"><span class="glyphicon glyphicon-star"></span> 投标</a>
+         </div>
+
+         <div class="col-xs-4 text-center">
+           <a href="__ROOT__/home/strategy?mobile=1"><span class="glyphicon glyphicon-star"></span> 策略</a>
+         </div>
+
+         <div class="col-xs-4 text-center footer_nav_active">
+           <span class="glyphicon glyphicon-star"></span>帮助
+         </div>
+       </div>
+
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  $( function() {
+    $( "#accordion" ).accordion({
+      heightStyle: "content",
+      collapsible: true,
+      active: false 
+    });
+  } );
+</script>
+

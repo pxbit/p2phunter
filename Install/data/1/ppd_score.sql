@@ -1,0 +1,12 @@
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS `ppd_score`;
+CREATE TABLE `ppd_score` (
+  `EventId` int(11) NOT NULL AUTO_INCREMENT,
+  `UserId` int(11) NOT NULL,
+  `EventDiscription` varchar(256) DEFAULT NULL,
+  `ScoreChanged` int(11) DEFAULT 0,
+  `EventTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`EventId`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+

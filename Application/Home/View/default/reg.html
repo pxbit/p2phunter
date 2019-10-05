@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <include file="./Application/Home/View/default/common_resource_and_setting.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=no">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <title>注册拍拍贷</title>
+        <meta content="" name="keywords">
+        <meta content="" name="description">   
+    </head>
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Application/Home/View/default/css/init.css" >
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Public/lib/jquery-ui-1.12.1/jquery-ui.min.css" >
+    <link rel="stylesheet" href="__ROOT__/Application/Home/View/default/css/reg.css">
+    <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="__ROOT__/Public/lib/jquery1.12.1/jquery-ui.min.js" async></script>
+    <script src="__ROOT__/Public/lib/bootstrap-3.3.7-dist/js/bootstrap.js" async></script>
+    <script src="__ROOT__/Public/js/reg.js" async></script>
+    <body>
+        <div class="header" style="border-bottom: 1px solid #ccc">
+            <a href="http://www.p2phunter.cn" ><img src="__ROOT__/Public/pic/logo.png" width="139" height="34" alt="keywords"></a>
+            <img src="__ROOT__/Public/pic/question.png" width="20" height="20" alt=""><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=83b06873f726db102851c8d1f4e4a28604a3a91335d8e4c3f325d51ca7f55284"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="拍拍贷投标技术交流QQ: 579014066" title="投标技术交流:QQ 579014066"></a>
+        </div>
+        <table width="100%" align="center">
+            <tr>
+                <td align="center" valign="middle" height="300px" >
+                    <div class="reg center">
+                        <if condition="$startReg eq 1">   
+                        <div class="reg_title" > 拍拍贷授权注册 </div>
+                        <div name="reg_main" id="reg_main" >
+                            <form name="regform" id="regform" action="" method="post"  class="form-inline">
+                              <div class="form-group" >                        
+                                  <label class="form-label" for="mobile">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号:</label>
+                                  <input  class="form-control" name="mobile" type="text"  id="mobile" placeholder="" size="30" maxlength="11">                               
+                                <div class="promptcheckMobile" id="checkMobile" style="margin:5px 5px; float:right">*</div>
+                              </div>  
+                              
+                              <div class="form-group">  
+                                  <label class="form-label" for="mobile">手机验证码: </label>
+                                  <input class="form-control" name="mobileVerifyCode" type="text"  id="mobileVerifyCode" placeholder="" size="30" maxlength="4">
+                                  <input name="btnGetMobileVerifyCode" id="btnGetMobileVerifyCode" type="button" value="点击获取">
+                                  <input type="hidden" name="isMobileVerCodePass" id="isMobileVerCodePass">
+                              </div>                            
+                              <div class="form-group">
+                                  <label class="form-label" for="verifycode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;验证码:</label> 
+                                  <input class="form-control" name="verifycode" type="text" id="verifycode" placeholder="" size="30" maxlength="4" >
+                                  <div class="promptcheckVerifyCode" id="checkVerifyCode" style="margin:5px 5px; float:right">*</div>  
+                                  <input class="" name="isVefPass" type="hidden" id="isVefPass" value="0">
+                              </div>
+                              <div name="vefcode" id="vefcode">
+                                  <img id="verify_img" alt="点击更换" title="点击更换" src="{:U('Home/UserReg/verify',array())}">
+                              </div>
+                              <div> <input value="立即注册" onclick="chkformReg();" class="regbtn" type="button"> </div>
+                            </form>
+                        </div>
+                    <else /> 
+                    <div class="reg_echo"> {$echoMsg}</div>                  
+                    <if condition ="$echoCode eq 0 ">
+                    <div class="button" ><a target="_blank" href="login">授权登录</a></div>
+                    <div class="button" ><a target="_blank" href="reg" >继续注册</a></div>
+                    <else/>
+                    <div class="button" ><a target="_blank" href="reg">再尝试一次</a></div>
+                    </if> 
+                    </if>
+                </div>
+            </td>
+        </tr>
+        <tr>
+        <td>
+            <include file="./Application/Home/View/default/footer.html" />
+        </td>
+        </tr>
+    </table>
+</body>
+</html>
+

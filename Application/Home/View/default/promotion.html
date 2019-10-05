@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <!-- bootstrap v3.3.7 -->
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.min.css">
+  <script src="__ROOT__/Public/js/promotion.js"></script>
+  <script type="text/javascript"> 
+		function copyUrl2() 
+		{ 
+			var Url2=document.getElementById("jdcode_url"); 
+			Url2.select(); // 选择对象 
+			document.execCommand("Copy"); // 执行浏览器复制命令 
+			alert("已复制好，可贴粘至QQ，网站，微信等。"); 
+		} 
+</script>
+</head>
+
+<body >
+<include file="./Application/Home/View/default/header.html" />
+<div id="main" class="bodyblock">
+  <div id = "content" class="contentblock" >
+    <div class="spaceholder"></div>
+    <div class="about_block">
+		<h3>我的推荐码:<font color = "red"> {$jdcode} </font></h3>
+		<h3>推荐url:
+			<input type = "text" id = "jdcode_url" value = "http://www.p2phunter.cn/home/p/{$jdcode}" style = "width:250px;color:#008000;font-size:12px;">
+			<input type = "button" value = "复制" style = "font-size:16px;" onClick = "copyUrl2()">
+		</h3>
+		<h3 style = "text-align:left" >
+		<br>推荐说明：</br>
+			即日起，至2018年底，金雕推出推荐有奖活动，你可以推荐朋友授权使用金雕，
+			经推荐完成授权的新朋友，首次充值会额外赠送20%雕币。
+			活动期内完成推荐的，自新朋友注册期一年内新朋友每次充值，推荐人都将获得10%的雕币奖励，
+			雕币奖励仅用于投标使用。</br>
+			<br>推荐方式：</br>
+			<ul>
+				<li>
+				1. 您可以选择将推荐链接发给朋友，朋友只要打开过链接，并在15天内完成首次充值，即算为推荐成功。
+				</li>
+				<li>
+				2. 如果您不方便发送链接，你可以将推荐码发送给朋友，朋友在首次充值时，填入推荐码，即算为推荐成功。
+				</li>
+			</ul>
+			<br>奖励记录：</br>
+			<div id = 'promotion_list'></div>
+		</h3>
+  </div>
+</div>
+<include file="./Application/Home/View/default/footer.html" />
+</body>
+
+
+</html>
+<script>
+  $(document).ready(function(){
+  /* styling nav status */
+   $("ul.nav.nav-pills.nav-justified li:eq(0)").addClass("active");
+  });
+</script>

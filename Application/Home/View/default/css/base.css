@@ -1,0 +1,71 @@
+@CHARSET "UTF-8";
+/**
+ * Date: 2017-05-18 20:30
+ * Update:
+ */
+
+/* reset ///////////////////////////////////////////// */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, select, th, td { margin: 0; padding: 0; }
+body, button, input, select, textarea { font: 12px/1.5 '\5FAE\8F6F\96C5\9ED1', verdana, sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+address, cite, dfn, em, var { font-style: normal; }
+code, kbd, pre, samp { font-family: courier new, courier, monospace; }
+small { font-size: 12px; }
+ul, ol { list-style: none; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+sup { vertical-align: text-top; }
+sub { vertical-align: text-bottom; }
+legend { color: #000; }
+fieldset, img { border: 0; }
+button, input, select, textarea { font-size: 100%; }
+table { border-collapse: collapse; border-spacing: 0; }
+img { vertical-align: top; }
+
+/* public //////////////////////////////////////////// */
+.clearfix:after { content: '\200B'; clear: both; display: block; height: 0; }
+.hidden { display: none; }
+.it { font-style: italic; }
+
+body { background: #fff; color: #7f7f7f; }
+.col { width: 916px; margin: 0 auto; }
+
+/* header ///////////////////////////////////////////// */
+.header { padding: 17px 0; }
+.header img { float: left; }
+.header p { float: right; padding-top: 7px; font-size: 12px; line-height: 20px; color: #666; }
+.header p img { float: none; vertical-align: top; }
+.header p .it { color: #009cde; font-weight: 700; }
+
+/* banne ///////////////////////////////////////////// */
+.banner { height: 336px; background: url(../images/bg.jpg) no-repeat 60% center; color: #fff; background-size: cover; }
+.banner h1 { padding: 55px 0 0 0; font-size: 46px; font-weight: 400;  }
+.banner h2 { padding: 2px 200px 6px 0; font-size: 24px; font-weight: 400; }
+.banner p { padding: 2px 192px 20px 0; font-size: 18px; font-weight: 400;}
+.banner h3 { float: left; font-size: 24px;  border-radius: 5px; padding: 2px 10px; font-weight: 400; }
+
+/* register //////////////////////////////////////////// */
+.regsiter { padding-bottom: 85px; }
+.regsiter h2 { padding: 40px 0 60px; font-size: 24px; text-align: center; font-weight: 400; color: #000; }
+
+.regsiter-list li { float: left; width: 50%; }
+.regsiter-list .item { padding: 0 25px; text-align: center; }
+.regsiter-list .item h3 { padding-top: 18px; font-size: 20px; color: #000; }
+.regsiter-list .item p { padding-bottom: 20px; font-size: 16px; }
+.regsiter-list .item p.small { font-size: 12px; }
+.regsiter-list .item a { display: inline-block; width: 200px; margin: 0 auto; height: 40px; line-height: 40px; background-color: #ffa019; color: #fff; border-radius: 4px; font-size: 18px; }
+.regsiter-list .item a:hover { color: #fff; text-decoration: none; }
+
+
+/* step //////////////////////////////////////////// */
+.step { background-color: #f6f6f6; }
+.step .col { padding-bottom: 85px; overflow: hidden; }
+.step ul { float: left; width: 1200px; }
+.step li { float: left; width: 408px; margin-right: 100px; }
+.step h3 { padding: 80px 0 5px; font-size: 20px; color: #333; font-weight: 400; color: #009cde; }
+.step p { font-size: 16px; }
+.ititle{width:700px; margin:auto;font:28px/32px "Microsoft Yahei"; padding:100px;color:#d08000}
+.ititle span{ text-align:center;}
+#summary { margin: auto; width:600px; height:40px;padding-bottom:200px;padding-top:100px; text-align:center; }
+#summary p { font:24px/25px "Microsoft Yahei";padding:10px;}
+#summary span { color:#d08000;margin:10px;}

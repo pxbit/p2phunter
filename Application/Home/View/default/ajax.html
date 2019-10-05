@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax测试</title>
+
+<script type="text/javascript" charset="UTF-8">
+function show(){
+    var ajax=new XMLHttpRequest();
+    ajax.open('GET','{:U("ajaxx")}',true);
+    ajax.setRequestHeader("Content-Type","text/html;charset=utf-8");
+    ajax.send();
+    ajax.onreadystatechange=function(){
+        if(ajax.readyState==4 &&ajax.status==200 ){
+            var str = eval("'" + ajax.responseText +
+                    "'");//将ajax返回的json数据转换为中文显示
+            document.getElementById('div').innerHTML=str;
+        }
+    }   
+}
+</script>
+
+</head>
+<body>
+
+<div id="div"></div>
+<button onclick="show()">AJAX</button>
+
+</body>
+</html>

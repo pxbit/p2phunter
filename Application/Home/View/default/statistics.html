@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <include file="./Application/Home/View/default/common_resource_and_setting.html" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <title>投标统计</title>
+    <meta content="" name="keywords">
+    <meta content="" name="description">   
+    <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+    <script src="__ROOT__/Public/lib/chartjs/chart.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js"></script>
+    <script src="__ROOT__/Public/js/jquery.js"></script>
+    <script src="__ROOT__/Public/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+    <script src="__ROOT__/Public/js/stat.js"></script>
+  </head>
+  <style>
+    .side-nav-item {
+      display: block;
+      padding: 10px 15px 10px 15px;
+      background-color: #FFFFFF;
+      cursor: pointer;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    }
+
+    .item-title {
+      background-color: #F5F5F5;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border-bottom: 1px solid #DDDDDD;
+    }
+
+    .panel-heading-nav {
+      padding: 0px;
+      border-radius: 3px;
+      border: 1px solid transparent;
+      border-color: #DDDDDD;
+    }
+
+    .item-body {
+      padding: 10px 15px 5px 15px;
+      border-bottom: 1px solid #DDDDDD;
+    }
+
+    .item-second {
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    .item-second a {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .at{ color:red;}
+    
+    /* overide bootstrap.css, change top=>bottom*/
+    .table > tbody > tr > td,
+    .table > tfoot > tr > td {
+      padding: 8px;
+      line-height: 1.42857143;
+      vertical-align: top;
+      border-bottom: 1px solid #ddd;
+      border-top: 0;
+    }
+  </style>
+  <body>
+    <div>
+      <include file="./Application/Home/View/default/header_nav.html" />
+    <div>
+      <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#" class="active">数据分析</a></li>
+        </ol>
+      </div>
+    <div class="container" >
+      <div class="row">
+        <div class="col-md-2">
+          <div class="panel-group" id="accordion">
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-parent="#accordion" href="{$overviewUrl}">总体情况</a>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-toggle="collapse" data-parent="#accordion" href="#day">逾期统计</a>
+              <div id="day" class="panel-collapse collapse">
+                <div class="item-body">
+                  <ul class="list-unstyled">
+                    <li> <a href="#">总体情况</a> </li>
+                    <li> <a href="{$overdueUrl}">逾期分布</a> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-toggle="collapse" data-parent="#accordion" href="#interest">收益统计</a>
+              <div id="interest" class="panel-collapse collapse">
+                <div class="item-body">
+                  <ul class="list-unstyled">
+                    <li class="item-second"> <a href="#">总体情况</a> </li>
+                    <li class="item-second"> <a href="#">收益分布</a> </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-toggle="collapse" data-parent="#accordion" href="#day">投标统计</a>
+              <div id="day" class="panel-collapse collapse">
+                <div class="item-body">
+                  <ul class="list-unstyled">
+                    <li> <a href="#">总体情况</a> </li>
+                    <li> <a href="#">01</a> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-toggle="collapse" data-parent="#accordion" href="#day">策略统计</a>
+              <div id="day" class="panel-collapse collapse">
+                <div class="item-body">
+                  <ul class="list-unstyled">
+                    <li> <a href="#">总体情况</a> </li>
+                    <li> <a href="#">01</a> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-toggle="collapse" data-parent="#accordion" href="#day">出标统计</a>
+              <div id="day" class="panel-collapse collapse">
+                <div class="item-body">
+                  <ul class="list-unstyled">
+                    <li> <a href="#">总体情况</a> </li>
+                    <li> <a href="#">01</a> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-toggle="collapse" data-parent="#accordion" href="#day">成分统计</a>
+              <div id="day" class="panel-collapse collapse">
+                <div class="item-body">
+                  <ul class="list-unstyled">
+                    <li> <a href="#">总体情况</a> </li>
+                    <li> <a href="#">01</a> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-toggle="collapse" data-parent="#accordion" href="#day">催收还款</a>
+              <div id="day" class="panel-collapse collapse">
+                <div class="item-body">
+                  <ul class="list-unstyled">
+                    <li> <a href="#">总体情况</a> </li>
+                    <li> <a href="#">01</a> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-toggle="collapse" data-parent="#accordion" href="#day">满标速度</a>
+              <div id="day" class="panel-collapse collapse">
+                <div class="item-body">
+                  <ul class="list-unstyled">
+                    <li> <a href="#">总体情况</a> </li>
+                    <li> <a href="#">01</a> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-toggle="collapse" data-parent="#accordion" href="#day">信陪比例</a>
+              <div id="day" class="panel-collapse collapse">
+                <div class="item-body">
+                  <ul class="list-unstyled">
+                    <li> <a href="#">总体情况</a> </li>
+                    <li> <a href="#">01</a> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1" style="border-left:1px solid #d6d6d6; width:1px;height:500px;"></div>
+        <div class="col-md-9">
+          <if condition ="$type eq 1 ">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading"> 投标总况 </div>
+                <div class="panel-body">
+                  <table class="table table-hover">
+                    <tbody>
+                      <tr>
+                        <td>{$vo['name']}</td>
+                        <td>{$vo['value']}</td>
+                        <td>{$vo['unit']}</td>
+                      </tr>
+                    </tbody>
+                  </table> 
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  逾期总况
+                </div>
+                <div class="panel-body">
+                  <table class="table table-hover">
+                    <tbody>
+                      <foreach name="overdueOverview" item="vo">
+                      <tr>
+                        <td>{$vo['name']}</td>
+                        <td>{$vo['value']}</td>
+                        <td>{$vo['unit']}</td>
+                      </tr>
+                      </foreach>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  收益总况
+                </div>
+                <div class="panel-body">
+                  <table class="table table-hover">
+                    <tbody>
+                      <foreach name="gainOverview" item="vo">
+                      <tr>
+                        <td>{$vo['name']}</td>
+                        <td>{$vo['value']}</td>
+                        <td>{$vo['unit']}</td>
+                      </tr>
+                      </foreach>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  投资策略
+                </div>
+                <div class="panel-body">
+                  <table class="table table-hover">
+                    <tbody>
+                      <foreach name="strategyOverview" item="vo">
+                      <tr>
+                        <td>{$vo['name']}</td>
+                        <td>{$vo['value']}</td>
+                        <td>{$vo['unit']}</td>
+                      </tr>
+                      </foreach>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <elseif condition="$type eq 2" />
+          <div class="row">
+            <div class="col-md-10">
+              <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                  <a href="#home" data-toggle="tab">
+                    总体分布
+                  </a>
+                </li>
+                <li><a href="#ios" data-toggle="tab">逾期分布1</a></li>
+                <li class="dropdown">
+                  <a href="#" id="myTabDrop1" class="dropdown-toggle"
+                                              data-toggle="dropdown">逾期分布2
+                                              <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                    <li><a href="#jmeter" tabindex="-1" data-toggle="tab">00</a></li>
+                    <li><a href="#ejb" tabindex="-1" data-toggle="tab">01</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                  </br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="panel panel-default">
+                        <div class=panel-heading>逾期标的数分布图(按距离当前天数,%)</div>
+                        <div class=panel-body>
+                          <canvas id="canvas-byday" ></canvas>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-md-6">
+                      <div class="panel panel-default">
+                        <div class=panel-heading>逾期标的数分布图(按期数,%) </div>
+                        <div class=panel-body>
+                          <canvas id="canvas-byphase" ></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="ios">
+                  <p>plot here ios </p>
+                </div>
+                <div class="tab-pane fade" id="jmeter">
+                  <p>plot here jmeter</p>
+                </div>
+                <div class="tab-pane fade" id="ejb">
+                  <p> plot here ejb</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <elseif condition="$type eq 3" />
+          <div class="row">
+            <div class="col-md-12">
+              </br>
+              <table id="example" class="display" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                  </tr>
+                  <tr>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>63</td>
+                    <td>2011/07/25</td>
+                    <td>$170,750</td>
+                  </tr>
+                  <tr>
+                    <td>Ashton Cox</td>
+                    <td>Junior Technical Author</td>
+                    <td>San Francisco</td>
+                    <td>66</td>
+                    <td>2009/01/12</td>
+                    <td>$86,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <elseif condition="$type eq 4" />
+          bbb
+          <elseif condition="$type eq 5" />
+          ccc
+          <else />
+
+          ddd
+          </if>
+        </div>
+      </div>
+  </body>
+</html>
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+    $('#day').collapse('hide');
+  } );
+
+</script>

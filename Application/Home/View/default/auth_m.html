@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <link rel="stylesheet" href="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Public/lib/datatables/datatables.min.css" />
+  <link rel="stylesheet" type="text/css" href="__ROOT__/Public/lib/datatables/responsive.dataTables.min.css"/>
+  <link href="__ROOT__/Application/Home/View/default/css/user.css?v=20180815" rel="stylesheet" type="text/css">
+  <!-- libs -->
+  <script src="__ROOT__/Public/lib/jquery/jquery.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-cookie/jquery.cookie.min.js"></script>
+  <script src="__ROOT__/Public/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery-ui/jquery-ui.min.js"></script>
+  <script src="__ROOT__/Public/lib/datatables/datatables.min.js"></script>
+  <script src="__ROOT__/Public/lib/datatables/dataTables.responsive.min.js"></script>
+  <script src="__ROOT__/Public/lib/jquery/jquery-migrate.min.js"></script>
+  <!-- modules' js  -->
+  <script src="__ROOT__/Public/js/base.js"></script>
+  <script src="__ROOT__/Public/js/datatable_common.js"></script>
+  <script src="__ROOT__/Public/js/user_common.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+  <style>
+  .main-title{
+    text-align:center;
+    font-weight:bold;
+    font-size:18px;
+    margin-top:10px;
+    margin-bottom:10px;
+    color:#6f6f6f;
+  }
+
+  body{
+    height:100%;
+  }
+  </style>
+</head>
+
+<body>
+
+  <div id="main">
+    <div id = "content">
+
+      <div class="row">
+        <div class="col-sm-12 main-title"> 金雕猎手 </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 text-center" style="margin:10px;">
+          <p><strong>请授权多个线程，提高投标效率</strong></p>
+        </div>
+      </div>
+
+      <div class="container_fluid" style="margin-bottom:70px;">
+        <div class="row">
+          <div class="col-sm-12">
+            <div style="margin:10px;">
+              <table id="tbl-auth" class="display nowrap" width="100%" cellspacing="0"> </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
+
+<script>
+  $(document).ready(function(){
+   var auth_data = {$authStatus};
+   var dataSet = new Array();
+   for (var id in auth_data){
+	   var app = auth_data[id];
+	   var name = "线程" + app['AppIndex'];
+	   var appid = app['AppId']
+	   var actionLink = "https://ac.ppdai.com/oauth2/login?AppID="
+			   + appid
+			   + "&ReturnUrl=http://www.p2phunter.cn/home/user/auth/i/"
+			   + appid
+			   + "/";
+	   if (typeof(app['Status']) == "undefined")
+		   var status = "未授权";
+	   else if(app['Status'] < 0)
+		   var status = "授权失效";
+	   else
+		   var status = "授权成功";
+	   if (status == "授权成功" && typeof(app['RTExpireDate']) != "undefined"){
+		   var date = app['RTExpireDate'];
+	   }else{
+		   var date = "";
+	   }
+
+     if (app['AppIndex'] != 1){
+       dataSet.push([name, "授权", status, date, actionLink]);
+     }
+
+     //    $("#act-auth a").attr("href", actionLink);
+   }
+
+    $('#tbl-auth').DataTable({
+      data: dataSet,
+      columns: [
+        { title: "线程名称" },
+        { title: "授权操作" },
+        { title: "授权状态" },
+        { title: "失效日期" },
+        { title: "opr-link" }
+      ],
+
+      columnDefs: [
+        {
+          data: "4",
+          render: function ( data, type, row ) {
+            var link= "<a href=" + data + ">授权操作</a>";
+            return link;
+
+          },
+          targets: 1  /* 针对第二列 */
+        },
+        {
+          visible: false,
+          targets: 4
+        }
+      ],
+
+      ordering: false,
+      pageLength: 10,
+      responsive: true,
+      dom: 'rtip'
+    });
+
+  });
+</script>
+

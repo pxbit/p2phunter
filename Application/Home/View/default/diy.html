@@ -1,0 +1,490 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<include file="./Application/Home/View/default/common_resource_and_setting.html" />
+  <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap/css/bootstrap.css">
+<script type="text/javascript" src="__ROOT__/Public/js/json2.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/js/strategy_diy.js?v=20181127"></script>
+</head>
+
+<body >
+<include file="./Application/Home/View/default/header.html" />
+<div id="main" class="bodyblock">
+  <div id = "content" class="contentblock" >
+    <div class="block_trnsp">
+      <div class="strategy_info">
+      <p1> 自定义策略设置</p1>
+      <p></p>
+      <p>说明：每人最多可以定义10条，策略条件不能太苛刻，否则可能无标可投，你可以回测出标量，确保有标可投；策略设置完成后，需要保存十几分钟后才能生效。</p>
+      </div>
+    </div>
+        
+     <div class="block_white">
+      <div class="strategy_diy_setting">
+        <div class="strategy_diy_row white" id="strategyname">
+          <div class="setting_name" >策略名称</div> 
+          <div class="setting_value" >
+            <input class="single_value_input" type="text" name="" id="strategynameA" value="我的策略1">
+          </div> 
+          <div class="setting_tips" >给我起个炫酷的名字吧</div>
+        </div>
+        <div class="strategy_diy_row gray" id="strategydisc">
+          <div class="setting_name" >策略描述</div> 
+          <div class="setting_value" ><input class="block_text_input" type="text" name="" id="strategydiscA" value=""></div> 
+          <div class="setting_tips" >描述你的策略特征，方便区分记忆</div>
+        </div>
+        <div class="strategy_diy_row white" id="Amount">
+          <div class="setting_name" >借款金额（元）</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="AmountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="AmountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >你是偏好小额贷款还是大额呢？</div>
+        </div>
+        <div class="strategy_diy_row gray" id="Month">
+          <div class="setting_name" >借款期限（月）</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="MonthA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="MonthB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >拍拍贷贷款期限从1月-36月</div>
+        </div>
+        <div class="strategy_diy_row white" id="Rate">
+          <div class="setting_name" >利率范围（%）</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="RateA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="RateB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >拍拍贷利率范围从9%-36%</div>
+        </div>
+        <div class="strategy_diy_row gray" id="Credit">
+          <div class="setting_name" >魔镜评级</div> 
+          <div class="setting_value" >
+            <div style="display:none;"><input class="OptionLittle unselect" type="button" name="AA" id="Credit01" value="AA" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="A" id="Credit02" value="A" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="B" id="Credit04" value="B" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="C" id="Credit08" value="C" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="D" id="Credit16" value="D" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="E" id="Credit32" value="E" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="F" id="Credit64" value="F" ></div>
+            
+          </div>
+          <div class="setting_tips" >拍拍贷魔镜初始评级，A最安全，F风险最高</div>
+        </div>
+        <div class="strategy_diy_row white" id="Validation">
+          <div class="setting_name" >必备认证</div> 
+          <div class="setting_value" >
+            <div><input class="OptionLittle unselect" type="button" name="" id="CertificateValidate" value="学历" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="CreditValidate" value="征信" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="NciicIdentityCheck" value="户籍" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="PhoneValidate" value="手机" ></div>
+          </div> 
+          <div class="setting_tips" >注意，这些认证是与关系，灰色表示不关心，绿色代表必须有此项认证才投标</div>
+        </div>
+        <div class="strategy_diy_row gray" id="ValidationFalse">
+          <div class="setting_name" >排除认证</div> 
+          <div class="setting_value" >
+            <div><input class="OptionLittle unselect" type="button" name="" id="CertificateValidateFalse" value="学历" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="CreditValidateFalse" value="征信" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="NciicIdentityCheckFalse" value="户籍" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="PhoneValidateFalse" value="手机" ></div>
+          </div> 
+          <div class="setting_tips" >注意，灰色表示不关心，绿色代表有此认证则不投</div>
+        </div>
+        <div class="strategy_diy_row white" id="TailNumber">
+          <div class="setting_name" >排除借款金额零头</div> 
+          <div class="setting_value" >
+            <div><input class="OptionLittle unselect" type="button" name="" id="TailNumber10" value="排除" ></div>
+          </div> 
+          <div class="setting_tips" >本次借款金额不能被10整除的。</div>
+        </div>
+        <div class="strategy_diy_row gray" id="Degree">
+          <div class="setting_name" >学历学位</div> 
+          <div class="setting_value" >
+            <div><input class="OptionLittle unselect" type="button" name="" id="Degree01" value="博士" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="Degree02" value="硕士" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="Degree04" value="本科" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="Degree08" value="专科" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="Degree16" value="高职" ></div>
+            <div><input class="OptionLittle unselect" type="button" name="" id="Degree32" value="无" ></div>
+          </div> 
+          <div class="setting_tips" >通常学历越高，逾期率越低，但是标量也越低</div>
+        </div>
+        <div class="strategy_diy_row white" id="StudyStyle">
+          <div class="setting_name" >学习形式</div> 
+          <div class="setting_value" >
+            <div><input class="OptionMiddle unselect" type="button" name="" id="StudyStyle01" value="普通" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="StudyStyle02" value="成人" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="StudyStyle04" value="研究生" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="StudyStyle08" value="网络教育" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="StudyStyle16" value="自学考试" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="StudyStyle32" value="无学习形式" ></div>
+          </div> 
+          <div class="setting_tips" >其他包含开放教育和无学习形式的</div>
+        </div>
+        <div class="strategy_diy_row gray" id="School">
+          <div class="setting_name" >学校类别</div> 
+          <div class="setting_value" >
+            <div><input class="OptionMiddle unselect" type="button" name="" id="School01" value="985" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="School02" value="211" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="School04" value="其他学校" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="School08" value="无学校" ></div>
+          </div> 
+          <div class="setting_tips" >其他学校包括除985，211以外的所有大中专院校</div>
+        </div>
+        <div class="strategy_diy_row white" id="Gender">
+          <div class="setting_name" >性别</div> 
+          <div class="setting_value" >
+            <div><input class="OptionMiddle unselect" type="button" name="" id="Gender01" value="男" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="Gender02" value="女" ></div>
+          </div> 
+          <div class="setting_tips" >通常男老赖比女老赖多...</div>
+        </div>
+        <div class="strategy_diy_row gray" id="Age">
+          <div class="setting_name" >年龄</div> 
+          <div class="setting_value" >
+            <div><input class="OptionMiddle unselect" type="button" name="" id="Age01" value="18-22" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="Age02" value="23-27" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="Age04" value="28-32" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="Age08" value="33-40" ></div>
+            <div><input class="OptionMiddle unselect" type="button" name="" id="Age16" value="41-60" ></div>
+          </div> 
+          <div class="setting_tips" >你喜欢投什么年龄段的人？</div>
+        </div>
+        <div class="strategy_diy_row white" id="AgeRange">
+          <div class="setting_name" >具体年龄范围</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="AgeRangeA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="AgeRangeB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >此条件与年龄段为与关系</div>
+        </div>
+        <div class="strategy_diy_row gray" id="AvgBorrowInterval">
+        <div class="setting_name" >平均借款周期(天)</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="AvgBorrowIntervalA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="AvgBorrowIntervalB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >借款太频繁就不好了</div>
+        </div>
+        
+        <div class="strategy_diy_row white" id="LastSuccessInterval">
+          <div class="setting_name" >距离上次成功借款时间(天)</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="LastSuccessIntervalA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="LastSuccessIntervalB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >刚借完又借的，你怎么看？</div>
+        </div>
+        
+        <div class="strategy_diy_row gray" id="CurAvgIntervalRatio">
+          <div class="setting_name" >距离上次借款天数/平均借款周期</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="CurAvgIntervalRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="CurAvgIntervalRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >这次借款急吗？</div>
+        </div>
+        
+        <div class="strategy_diy_row gray" id="FirstSuccessInterval">
+          <div class="setting_name" >距离首次成功借款时间(月)</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="FirstSuccessIntervalA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="FirstSuccessIntervalB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >结合成功借款次数使用更有效</div>
+        </div>
+        
+        <div class="strategy_diy_row gray" id="RegisterMonth">
+          <div class="setting_name" >距离注册时间(月)</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="RegisterMonthA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="RegisterMonthB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >结合平均借款周期使用更有效</div>
+        </div>
+        
+       <div class="strategy_diy_row gray" id="RegisterFirstInterval">
+          <div class="setting_name" >首次借款距离注册天数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="RegisterFirstIntervalA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="RegisterFirstIntervalB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >反映借款人的性格？</div>
+        </div>
+        
+
+        
+        <div class="strategy_diy_row white" id="SuccessCount">
+          <div class="setting_name" >历史成功借款次数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="SuccessCountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="SuccessCountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >你偏爱首借？还是老司机呢？</div>
+        </div>
+        <div class="strategy_diy_row gray" id="WasteCount">
+          <div class="setting_name" >流标次数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="WasteCountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="WasteCountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >没有满标！</div>
+        </div>
+        <div class="strategy_diy_row gray" id="CancelCount">
+          <div class="setting_name" >撤标次数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="CancelCountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="CancelCountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >主动取消！</div>
+        </div>
+        
+        <div class="strategy_diy_row gray" id="FailCount">
+          <div class="setting_name" >失败次数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="FailCountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="FailCountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >审核失败！</div>
+        </div>
+        
+        <div class="strategy_diy_row white" id="NormalCount">
+          <div class="setting_name" >正常还清次数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="NormalCountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="NormalCountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >还清一期算一次哦</div>
+        </div>
+        <div class="strategy_diy_row gray" id="WasteNormalRatio">
+          <div class="setting_name" >流标次数/正常还清</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="WasteNormalRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="WasteNormalRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >人气指数</div>
+        </div>
+        
+        <div class="strategy_diy_row gray" id="NormalSuccessRatio">
+          <div class="setting_name" >正常还清/成功借款次数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="NormalSuccessRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="NormalSuccessRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >防刷重要指标</div>
+        </div>
+        <div class="strategy_diy_row white" id="DelayNormalRatio">
+          <div class="setting_name" >逾期（0-15天）还清次数/正常还清次数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="DelayNormalRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="DelayNormalRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >逾期指数</div>
+        </div>
+        <div class="strategy_diy_row gray" id="OverdueCount">
+          <div class="setting_name" >一般逾期次数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="OverdueCountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="OverdueCountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >15天以内的逾期次数</div>
+        </div>
+        <div class="strategy_diy_row white" id="OverdueMoreCount">
+          <div class="setting_name" >严重逾期次数</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="OverdueMoreCountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="OverdueMoreCountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >逾期超15天的逾期次数</div>
+        </div>
+        
+        <div class="strategy_diy_row gray" id="OwingAmount">
+          <div class="setting_name" >借前负债</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="OwingAmountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="OwingAmountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >本次借款前，未还清的本息总和</div>
+        </div>
+        
+        <div class="strategy_diy_row gray" id="OwingAfterAmount">
+          <div class="setting_name" >借后负债</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="OwingAfterAmountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="OwingAfterAmountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >借前待还  + 本次借款金额</div>
+        </div>
+        
+        <div class="strategy_diy_row gray" id="HighDebt">
+          <div class="setting_name" >历史最高负债</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="HighDebtA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="HighDebtB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >待还本息峰值</div>
+        </div>
+        <div class="strategy_diy_row white" id="OwingAmountRatio">
+          <div class="setting_name" >待还/本次借款</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="OwingAmountRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="OwingAmountRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >待还本息/本次借款金额</div>
+        </div>
+        
+        <div class="strategy_diy_row white" id="OwingPrevHighDebtRatio">
+          <div class="setting_name" >借前负债/历史最高负债</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="OwingPrevHighDebtRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="OwingPrevHighDebtRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >此指标体现了一个人经济偿还能力</div>
+        </div>
+        
+        <div class="strategy_diy_row gray" id="OwingHighDebtRatio">
+          <div class="setting_name" >借后负债/历史最高负债</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="OwingHighDebtRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="OwingHighDebtRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >借后负债=本次借款金额+当前待还</div>
+        </div>
+        
+        <div class="strategy_diy_row white" id="LastHighestBorrowRatio">
+          <div class="setting_name" >本次借款金额/历史最高单次借款金额</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="LastHighestBorrowRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="LastHighestBorrowRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >新高是机遇还是风险？</div>
+        </div>
+        
+        <div class="strategy_diy_row white" id="TotalBorrow">
+          <div class="setting_name" >累计借款金额</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="TotalBorrowA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="TotalBorrowB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >总借款本金</div>
+        </div>
+        
+        <div class="strategy_diy_row white" id="OwnPreTotalBorrowRatio">
+          <div class="setting_name" >待还/累计借款金额</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="OwnPreTotalBorrowRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="OwnPreTotalBorrowRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >还款能力指数</div>
+        </div>
+        
+        <div class="strategy_diy_row white" id="CurAmountTotalBorrowRatio">
+          <div class="setting_name" >本次借款/累计借款金额</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="CurAmountTotalBorrowRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="CurAmountTotalBorrowRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >配合上一指数使用更有效</div>
+        </div>
+        
+        <div class="strategy_diy_row white" id="AvgBorrowAmount">
+          <div class="setting_name" >平均借款金额</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="AvgBorrowAmountA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="AvgBorrowAmountB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >平均每次借款金额</div>
+        </div>
+        
+        <div class="strategy_diy_row white" id="CurAmountAvgBorrowRatio">
+          <div class="setting_name" >本次借款/平均借款金额</div> 
+          <div class="setting_value" >
+            <div><input class="range_value_input" type="text" name="" id="CurAmountAvgBorrowRatioA" value="" ></div>
+            <div class="range_middle_text">至</div>
+            <div><input class="range_value_input" type="text" name="" id="CurAmountAvgBorrowRatioB" value="" ></div>
+          </div> 
+          <div class="setting_tips" >低点更好？</div>
+        </div>
+        
+        
+        <div class="strategy_diy_row gray" id="BidAmount">
+          <div class="setting_name" >单标投标金额</div> 
+          <div class="setting_value" >
+            <input class="single_value_input" type="text" name="" id="BidAmountA" value="">
+          </div> 
+          <div class="setting_tips" >单标投标金额请输入50-500之间的整数</div>
+        </div>
+        <div class="strategy_diy_row white" id="DayAmountLimit">
+          <div class="setting_name" >每日投标限额</div> 
+          <div class="setting_value" >
+            <input class="single_value_input" type="text" name="" id="DayAmountLimitA" value="">
+          </div> 
+          <div class="setting_tips" >每日投标限额，超过将停止该自定义策略投标,0表示不限额。</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="block_white">
+      <div class="strategy_setting_option">
+        <p><span id="strategy_diy_save">保存策略</span><span id="strategy_diy_test">测试策略</span></p>
+      </div>
+    </div>
+    <div class="block_trnsp">
+      <div class="strategy_setting_option">
+        <div id= 'strategy_test_result_summary'></div>
+      </div>
+    </div>
+    <div class="block_white">
+      <div class="strategy_test_result">
+        <table class="strategy_test_result_table" id="strategy_test_result_table">
+
+              </table>
+      </div>
+    </div>
+
+  </div>
+      
+</div>
+<include file="./Application/Home/View/default/footer.html" />
+</body>
+
+
+</html>
+<script>
+  $(document).ready(function(){
+  /* styling nav status */
+   $("ul.nav.nav-pills.nav-justified li:eq(1)").addClass("active");
+  });
+</script>

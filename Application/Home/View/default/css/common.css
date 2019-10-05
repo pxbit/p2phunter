@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+body { margin: 0; }
+.contentblock {	width:100%;	height:auto !important;	height:100%;	min-height:600px;	background-color:#f0f0f0; padding-bottom:100px;}
+.block_trnsp {	width:100%;	margin:auto;}
+.block_white {	width:100%;	margin:auto;	background-color:#ffffff;}
+.bodyblock {	width:100%;	height:auto !important;	height:100%;	min-height:100%;	color:#808080;}
+.spaceholder {	height:10px;}
+
+/*@user css*/
+.statistic{width:210px;height:120px;border-right: 1px #e0e0e0 solid;text-align:center;float:left;}
+.statistic_block p1{font:24px/25px "Microsoft Yahei";}
+.statistic_last{width:210px;height:120px;text-align:center;float:left;}
+.statistic_block{width:850px;height:120px;margin:auto;padding:40px;}
+.user_info{width:780px;height:160px;text-align:left;margin:auto;padding:20px;font: 16px/25px "Microsoft Yahei";}
+.user_info_block{padding:10px;height:140px;text-align:left;float:left;}
+.bid_record_option{width:500px;height:50px;margin:auto;padding:40px;text-align:center;}
+.bid_record_option p1{font-size:32px;font-family:"黑体";}
+.bid_record{width:650px;margin:auto;padding:10px 0px 10px 0px;}
+.bid_record_table{text-align:center;}
+.bid_record_table td{padding:5px 0px;width:170px;border-bottom:#f0f0f0 solid 1px;}
+.bid_record_table tr{height: 25px;}
+.bid_record_table a:hover {text-decoration:underline;cursor:pointer;}
+.bid_record_table a:link { text-decoration: none;color: green}
+.bid_record_table a:visited { text-decoration: none;color: green}
+.pagecontrol { margin:auto;text-align: center;padding: 20px;font:16px/25px "Microsoft Yahei";}
+.pagecontrol span{ margin: 10px; }
+.pagecontrol .next:hover{ text-decoration:underline;cursor:pointer;}
+.pagecontrol .prev:hover{ text-decoration:underline;cursor:pointer;}
+/*@user pay css*/
+.PayAmountBlock{font: 16px/25px "Microsoft Yahei";margin:auto;width:480px;height:35px;}
+.pay_info_row{font: 16px/25px "Microsoft Yahei";margin:auto;padding:5px;width:550px;height:30px;text-align:left;}
+.pay_info_name{font: 16px/25px "Microsoft Yahei";height:20px;float:left;}
+.pay_info_value{font: 16px/25px "Microsoft Yahei";width:550px;height:20px;float:left;}
+.pay_info {font: 16px/25px "Microsoft Yahei";margin:auto;padding:50px 0px 5px 0px;width:700px;height:40px;text-align:left;}
+#jdcode{width:100px;font-size:14px;}
+/*@ promotion css*/
+#promotion_list{width:600px;margin:auto;padding:20px;background-color: #fcfcfc,font:32px/25px  "Microsoft Yahei";}
+#promotion_list td {width:200px;height: 30px;}
+#promotion_list th {width:200px;height: 30px;}
+/*
+#user_pay{width:30px;border: 1px solid #ff8008;margin:0px 20px;padding:0px 5px;color:#ffffff;background-color: #ff8008}
+#user_pay:hover{ text-decoration:underline;cursor:pointer;}
+*/
+/*@strategy.html css*/
+
+.strategy_info{width:900px;text-align:center;margin:auto;padding-top:50px;}
+.strategy_info p1 {padding-bottom: 50px; font:32px/25px "Microsoft Yahei";}
+.strategy_info p {font:16px/25px "Microsoft Yahei";text-align:left;}
+.strategy_info a:hover {text-decoration:underline;cursor:pointer;}
+
+.strategy_setting_option{font-family:"Microsoft Yahei";text-align:center;padding:20px;}
+.strategy_setting_option span{padding:10px;border: 1px solid #999999;margin:20px;}
+.strategy_setting_option span:hover {text-decoration:black; color:green;cursor:pointer;border: 1px solid green;}
+.strategy_setting{width:900px;margin:auto;padding:10px 0px 10px 0px;}
+.strategy_setting_table{text-align:center;}
+.strategy_setting_table td{padding:5px 0px;width:160px;border-bottom:#f0f0f0 solid 1px;}
+.strategy_setting_table tr{height: 25px;}
+.strategy_setting_table a:hover {text-decoration:underline;cursor:pointer;}
+.strategy_setting_save {width:900px;margin:auto;padding:10px;}
+.strategy_setting_save span{text-align:center;padding:20px 100px;}
+.set_bid_amount {width:100px;text-align:center;margin:auto;border:0px; color:green;text-decoration:underline;}
+.change_bid_amount {width:100px;text-align:center;margin:auto;border:1px solid #ccccff;}
+.switch{
+	cursor: pointer;display: inline-block;margin: 0 5px;vertical-align: top;width: 15px;text-align: center;
+    font: 12px/25px "Microsoft Yahei";    color: #207cbc;    
+    background: url(../images/switch.png) center top no-repeat;
+    opacity: 1; float: none; text-shadow: none;
+}
+.switch.close{ padding-left: 30px; padding-right: 11px; background-position: center bottom; color: #999;}
+.switch.open { padding-left: 11px; padding-right: 30px; background-position: center top;}
+.new_strategy{width:900px;height:40px;margin:auto;}
+.bt_link{width:70px;height:20px;margin-right:30px;padding:5px;float:right;text-align:center;color:gray;border:1px solid gray;}
+.bt_link {text-decoration:black; color:green;cursor:pointer;border: 1px solid green;}
+
+/*@about*/
+/*@about*/
+.about_block h1 {font:32px/25px  "Microsoft Yahei";text-align:center;}
+.about_block h2 {font:24px/25px "Microsoft Yahei";text-align:center;padding-top:30px;}
+.about_block h3 {font:16px/25px "Microsoft Yahei"; text-align:center;padding:10px;}
+.about_block{width:640px;text-align:center;margin:auto;}
+/*@help*/
+.KFDH{margin:auto;	text-align:center;	font: 24px/25px "Microsoft Yahei";	padding:50px 50px 20px 50px;}
+.KFDH-DH p{	text-align:left;}
+.KFDH-DH{margin:auto;	width:700px;text-align:center;	font: 16px/25px "Microsoft Yahei";	border:solid #909090 2px;	background-color:#fafafa;	padding:30px;	color:#808080;}
+
+/*analysis*/
+.ana_pic{width:640px;padding:30px;}
+.ana_pic_row{background-color: white; }
+.ana_content{font: 18px/25px "Microsoft Yahei";margin:auto;	text-align:center; width:700px;padding-top:50px;}
+.ana_content h1 {font:24px/25px   "Microsoft Yahei";text-align:center;padding-top:50px;}
+.ana_content p{text-align:center;}
+
+/*strategy/diy*/
+.strategy_diy_setting{width:900px;height:3080px;margin:auto;padding:10px 0px 10px 0px;}
+.strategy_diy_row{float:left;width:900px;font: 16px/25px "Microsoft Yahei";padding:10px}
+.strategy_diy_row.white{background-color: #fcfcfc}
+.strategy_diy_row.gray{background-color: #f6f6f6}
+.setting_name{float:left;width:200px;}
+.setting_value{float:left;width:400px;}
+.setting_tips{float:left;width:250px;padding:5px 20px;}
+.setting_tips.red{color:red;}
+.single_value_input{border:1px solid #e8e8e8;float:left;width:200px;height:32px;color:green;font: 16px/25px "Microsoft Yahei";}
+.block_text_input{border:1px solid #e8e8e8;float:left;width:400px;height:60px;color:green;font: 16px/25px "Microsoft Yahei";}
+.range_value_input{border:1px solid #e8e8e8;float:left;width:150px;height:32px;color:green;font: 16px/25px "Microsoft Yahei";}
+.range_middle_text{width:20px;float:left;margin:0px 20px;height:32px;}
+.OptionLittle{width:50px;height:32px;float:left; margin:5px}
+.OptionMiddle{width:80px;height:32px;float:left; margin:5px}
+.strategy_diy_setting .select{background-color: #f0ffff;color:green;border-block-end-style:double;}
+.strategy_diy_setting .unselect{background-color: #eeeeee;color:gray;border-block-end-style: double}
+.strategy_test_result{width:1000px;margin:auto;text-align:center;font: 12px/16px "Microsoft Yahei";}
+.strategy_test_result_table{padding-top:20px;}
+.strategy_test_result_table td{padding:5px 20px;}
+.hidden{ visibility:hidden }
+.global_setting{ margin:auto;padding:20px; width:900px;}
+.global_setting_label{font: 16px/25px "Microsoft Yahei"; margin:10px;}
+.global_setting_value{width:80px; margin-right:20px;}
+.simplebutton{padding:5px; border: 1px solid #999999; margin:20px; height:20px;}
+.simplebutton:hover {text-decoration:underline;cursor:pointer;border: 1px solid green;padding:10px;color:green;}
+/* navbar */
+nav a { color: #666; text-decoration: none; }
+.menudrop{
+    background: url(../images/down_arrow_orange.png) right no-repeat;background-size:5px 5px;
+}

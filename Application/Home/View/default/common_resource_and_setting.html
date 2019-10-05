@@ -1,0 +1,41 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes” />
+<title>{$title}</title>
+<script type="text/javascript">
+var ThinkPHP = window.Think = {
+        "ROOT"   : "__ROOT__",
+        "APP"    : "__APP__",
+        "PUBLIC" : "__PUBLIC__",
+        "DEEP"   : "{:C('URL_PATHINFO_DEPR')}",
+        "MODEL"  : ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+        "VAR"    : ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
+}
+    var publicurl = "__PUBLIC__";
+  var PUBLIC= "__public__";
+  var APP = "__APP__";
+  var ROOT = "__ROOT__";
+  
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<link href="__ROOT__/Application/Home/View/default/css/common.css?v=20181128" rel="stylesheet" type="text/css">
+<link href="__ROOT__/Application/Home/View/default/css/header.css" rel="stylesheet" type="text/css">
+<link href="__ROOT__/Application/Home/View/default/css/footer.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__ROOT__/Public/js/jquery.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/js/think.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/js/common.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/js/navi.js"></script>
+

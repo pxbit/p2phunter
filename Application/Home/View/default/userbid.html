@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <include file="./Application/Home/View/default/common_resource_and_setting.html" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <title>投标统计</title>
+    <meta content="" name="keywords">
+    <meta content="" name="description">   
+    <link rel="stylesheet" href="__ROOT__/Public/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+    <script src="__ROOT__/Public/lib/chartjs/chart.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js"></script>
+    <script src="__ROOT__/Public/js/jquery.js"></script>
+    <script src="__ROOT__/Public/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+  </head>
+  <style>
+    .side-nav-item {
+      display: block;
+      padding: 10px 15px 10px 15px;
+      background-color: #FFFFFF;
+      cursor: pointer;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    }
+
+    .item-title {
+      background-color: #F5F5F5;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border-bottom: 1px solid #DDDDDD;
+    }
+
+    .panel-heading-nav {
+      padding: 0px;
+      border-radius: 3px;
+      border: 1px solid transparent;
+      border-color: #DDDDDD;
+    }
+
+    .item-body {
+      padding: 10px 15px 5px 15px;
+      border-bottom: 1px solid #DDDDDD;
+    }
+
+    .item-second {
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    .item-second a {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .at{ color:red;}
+    
+    /* overide bootstrap.css, change top=>bottom*/
+    .table > tbody > tr > td,
+    .table > tfoot > tr > td {
+      padding: 8px;
+      line-height: 1.42857143;
+      vertical-align: top;
+      border-bottom: 1px solid #ddd;
+      border-top: 0;
+    }
+
+    .breadcrumb > li + li:before {
+      color: #CCCCCC;
+      content: "/ ";
+      padding: 0 5px;
+    }
+
+    #tblBidlist{  
+      width: 100% !important;  
+    }  
+    .table>tbody>tr>td{  
+      text-align:center;  
+    }  
+
+    /* dataTables表头居中 */  
+    .table>thead:first-child>tr:first-child>th{  
+      text-align:center;  
+    }  
+    .table>tbody>tr>td{  
+      text-align:center;  
+    }  
+
+    /* dataTables表头居中 */  
+    .table>thead:first-child>tr:first-child>th{  
+      text-align:center;  
+    }  
+
+  .dl-horizontal dt {
+    width: 100px;
+    text-align: left;
+    margin-left: 50px;
+  }
+  </style>
+  <body>
+    <div>
+      <include file="./Application/Home/View/default/header_nav.html" />
+    <div>
+      <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#" class="active">我的投标</a></li>
+        </ol>
+      </div>
+      <div class="container" >
+        <div class="row">
+        <div class="col-md-2">
+          <div class="panel-group" id="accordion">
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-parent="#accordion" href="{$bidListUrl}">我的标的</a>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-parent="#accordion" href="{$bidInterestUrl}">我的收益</a>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-parent="#accordion" href="{$bidOverduetUrl}">我的逾期</a>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-parent="#accordion" href="{$bidOverduetUrl}">我的策略</a>
+            </div>
+            <div class="panel-heading-nav panel">
+              <a class="side-nav-item item-title" data-parent="#accordion" href="{$bidOverduetUrl}">我的设置</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <if condition ="$type eq 1 ">
+          </br>
+          <div class="row">
+            <div class="col-md-12">
+              <table id="tblBidlist" class="display" width="100%" cellspacing="0">
+                <thead>
+                  <td>投标号</td> 
+                  <td>策略号</td> 
+                  <td>投标金额(元)</td> 
+                  <td>投标时间</td> 
+                  <td>还款状态</td> 
+                  <td>投标费用(雕币)</td> 
+                </thead>
+              </table>
+            </div>
+          </div>
+          <elseif condition="$type eq 2" />
+          <div class="row">
+            <div class="col-md-12">
+              <ul id="myTab" class="nav nav-tabs">
+                <li class="active"> <a href="#overview" data-toggle="tab">总体收益</a> </li>
+                <li><a href="#tabBidList" data-toggle="tab">收益清单</a></li>
+                <li class="dropdown">
+                  <a href="#" id="distributeTabDrop" class="dropdown-toggle" data-toggle="dropdown">收益分布
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="distributeTabDrop">
+                    <li><a href="#byTime" tabindex="-1" data-toggle="tab">按时间</a></li>
+                    <li><a href="#byStragety" tabindex="-1" data-toggle="tab">按投标策略</a></li>
+                    <li><a href="#byGroupCharacter" tabindex="-1" data-toggle="tab">按群体特征</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="overview">
+                  </br>
+                  <div style="height:200px; width:40%; border:solid 1px #ddd; background-color:#f9f9f9">
+                    <dl class="dl-horizontal" style="margin-top:20px;">
+                      <dt style="height:30px;">收益金额:</dt>
+                      <dd>{$interestOw['totalBidGain']}</dd>
+                      <dt style="height:30px;">收益率:</dt>
+                      <dd>{$interestOw['totalGainRatio']}%</dd>
+                      <dt style="height:30px;">收益期数:</dt>
+                      <dd>{$interestOw['totalRepayCount']}</dd>
+                      <dt style="height:30px;">收益标的数:</dt>
+                      <dd>暂不支持显示</dd>
+                      <dt style="height:30px;">收益标的占比:</dt>
+                      <dd>暂不支持显示</dd>
+                    </dl>
+                  </div>
+                </div>
+                <div class="tab-pane fade in" id="tabBidList">
+                  </br>
+                  <table id="tblInterestBidlist" class="display" width="100%" cellspacing="0">
+                    <thead>
+                      <td>策略号</td>
+                      <td>散标编号</td>
+                      <td>分期号</td>
+                      <td>还款时间</td>
+                      <td>本金</td>
+                      <td>收益</td>
+                      <td>还款状态</td>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          </if>
+        </div>
+        </div>
+      </div>
+  </body>
+</html>
+<script>
+  $(document).ready(function() {
+    var dtUrl;
+    if({$type} == 1){
+      dtUrl = Think.U('Home/UserBid/listBid');
+    }else if({$type} == 2){
+      dtUrl = Think.U('Home/UserBid/interestBid');
+    }
+
+    $('#tblBidlist').DataTable({
+      "paging":true,
+      "pagingType":"full_numbers",
+      "lengthMenu":[5,10,25,50],
+      "processing": true,
+      "searching": true, //是否开启搜索
+      "serverSide": true,//开启服务器获取数据
+      "order": [[ 0, "desc" ]], //默认排序
+      "processing": true,
+      ajax: {
+        url: dtUrl,
+        type:'POST',
+        dataSrc:function(json){
+          var dataSet = new Array();
+          dataSet = json.data;
+          return dataSet;
+        }
+      },
+      "language":{ // 定义语言
+        "sProcessing":"加载中...",
+        "sLengthMenu":"每页显示 _MENU_ 条记录",
+        "sZeroRecords":"没有匹配的结果",
+        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索:",
+        "sUrl": "",
+        "sEmptyTable": "表中数据为空",
+        "sLoadingRecords": "载入中...",
+        "sInfoThousands": ",",
+        "oPaginate": {
+          "sFirst": "首页",
+          "sPrevious": "上一页",
+          "sNext": "下一页",
+          "sLast": "末页"
+        },
+        "oAria": {
+          "sSortAscending": ": 以升序排列此列",
+          "sSortDescending": ": 以降序排列此列"
+        }
+      }
+    });
+
+    $('#tblInterestBidlist').DataTable({
+      "paging":true,
+      "pagingType":"full_numbers",
+      "lengthMenu":[5,10,25,50],
+      "processing": true,
+      "searching": true, //是否开启搜索
+      "serverSide": true,//开启服务器获取数据
+      "order": [[ 0, "desc" ]], //默认排序
+      "processing": true,
+      ajax: {
+        url: dtUrl,
+        type:'POST',
+        dataSrc:function(json){
+          var dataSet = new Array();
+          dataSet = json.data;
+          return dataSet;
+        }
+      },
+      "language":{ // 定义语言
+        "sProcessing":"加载中...",
+        "sLengthMenu":"每页显示 _MENU_ 条记录",
+        "sZeroRecords":"没有匹配的结果",
+        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索:",
+        "sUrl": "",
+        "sEmptyTable": "表中数据为空",
+        "sLoadingRecords": "载入中...",
+        "sInfoThousands": ",",
+        "oPaginate": {
+          "sFirst": "首页",
+          "sPrevious": "上一页",
+          "sNext": "下一页",
+          "sLast": "末页"
+        },
+        "oAria": {
+          "sSortAscending": ": 以升序排列此列",
+          "sSortDescending": ": 以降序排列此列"
+        }
+      }
+    });
+
+    $('#tblBidlist tbody').on('click','tr td:nth-child(3)', function (e) {
+      var name = $(this).text();
+      alert(name);
+    } );
+    // $('#day').collapse('hide');
+
+  });
+
+</script>
